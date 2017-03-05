@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/05/浅谈机器学习（二）/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
 <meta property="og:description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
-<meta property="og:updated_time" content="2017-03-05T07:09:27.468Z">
+<meta property="og:updated_time" content="2017-03-05T07:11:15.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈机器学习（二）">
 <meta name="twitter:description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
@@ -379,12 +379,12 @@
       
         <p>之前看到过拟合、欠拟合的原因和避免方法，都只是记住了而已，没有怎么理解，今天看到了周志华教授的《机器学习》，感觉体会很深刻啊。</p>
 <p><strong>泛化误差：</strong>衡量一个学习机器推广未知数据的能力。也就是说，根据学习的规则，把学习到的知识进行使用，也就是应用到新数据上的能力。<br><strong>偏差：</strong>学习算法的期望预测与真实结果的偏离程度，即刻画了算法本身的拟合能力。</p>
-<pre><code>- **算法影响**
-</code></pre><p><strong>方差：</strong>度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。</p>
-<pre><code>- **数据影响**
-</code></pre><p><strong>噪声：</strong>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即可花了学习问题本身的难度。</p>
-<pre><code>- **问题影响**
-</code></pre><p><strong>泛化误差 = 偏差 + 方差 + 噪声</strong></p>
+<ul>
+<li><strong>算法影响</strong><br><strong>方差：</strong>度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。</li>
+<li><strong>数据影响</strong><br><strong>噪声：</strong>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即可花了学习问题本身的难度。</li>
+<li><strong>问题影响</strong></li>
+</ul>
+<p><strong>泛化误差 = 偏差 + 方差 + 噪声</strong></p>
 <p><strong>欠拟合</strong><br>在训练不足时（偏差很大），学习期的拟合能力不强，训练数据的扰动不足（方差很小）以使学习器产生显著变化，此时偏差住到了泛化错误率（方差远小于偏差）。这是就出现了欠拟合情况。</p>
 <p><strong>过拟合</strong><br>随着训练程度的加深，学习期的拟合能力逐渐增强（训练的多，那么训练结果和预期就应该更相符，偏差就会变小），训练数据发生的扰动渐渐能被学习器学到，方差逐渐主导了泛化错误率（数据变多了，个别的很特别的数据的增多会引起方差变大）。在训练重组后，学习期的拟合能力已非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化（方差远大于偏差），就会发生过拟合。</p>
 <p>参考文献：</p>
@@ -509,7 +509,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
