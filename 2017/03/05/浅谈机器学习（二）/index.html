@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习,浅谈机器学习系列," />
 
 
 
@@ -87,12 +87,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="宗华小童鞋">
-<meta property="og:url" content="http://yoursite.com/categories/机器学习/index.html">
+<meta name="description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈机器学习（二）">
+<meta property="og:url" content="http://yoursite.com/2017/03/05/浅谈机器学习（二）/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
+<meta property="og:description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
+<meta property="og:updated_time" content="2017-03-05T07:09:27.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="宗华小童鞋">
+<meta name="twitter:title" content="浅谈机器学习（二）">
+<meta name="twitter:description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/机器学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/05/浅谈机器学习（二）/"/>
 
 
 
 
 
-  <title> 分类: 机器学习 | 宗华小童鞋 </title>
+  <title> 浅谈机器学习（二） | 宗华小童鞋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,7 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,47 +259,206 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        机器学习
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/03/05/浅谈机器学习（一）/" itemprop="url">
-              
-                <span itemprop="name">浅谈机器学习（一）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-05T11:19:21+08:00"
-              content="2017-03-05" >
-          03-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/05/浅谈机器学习（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="宗华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宗华小童鞋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浅谈机器学习（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T14:23:41+08:00">
+                2017-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习-深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习&深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/05/浅谈机器学习（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/浅谈机器学习（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前看到过拟合、欠拟合的原因和避免方法，都只是记住了而已，没有怎么理解，今天看到了周志华教授的《机器学习》，感觉体会很深刻啊。</p>
+<p><strong>泛化误差：</strong>衡量一个学习机器推广未知数据的能力。也就是说，根据学习的规则，把学习到的知识进行使用，也就是应用到新数据上的能力。<br><strong>偏差：</strong>学习算法的期望预测与真实结果的偏离程度，即刻画了算法本身的拟合能力。</p>
+<pre><code>- **算法影响**
+</code></pre><p><strong>方差：</strong>度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。</p>
+<pre><code>- **数据影响**
+</code></pre><p><strong>噪声：</strong>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即可花了学习问题本身的难度。</p>
+<pre><code>- **问题影响**
+</code></pre><p><strong>泛化误差 = 偏差 + 方差 + 噪声</strong></p>
+<p><strong>欠拟合</strong><br>在训练不足时（偏差很大），学习期的拟合能力不强，训练数据的扰动不足（方差很小）以使学习器产生显著变化，此时偏差住到了泛化错误率（方差远小于偏差）。这是就出现了欠拟合情况。</p>
+<p><strong>过拟合</strong><br>随着训练程度的加深，学习期的拟合能力逐渐增强（训练的多，那么训练结果和预期就应该更相符，偏差就会变小），训练数据发生的扰动渐渐能被学习器学到，方差逐渐主导了泛化错误率（数据变多了，个别的很特别的数据的增多会引起方差变大）。在训练重组后，学习期的拟合能力已非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化（方差远大于偏差），就会发生过拟合。</p>
+<p>参考文献：</p>
+<blockquote>
+<p>《机器学习》 周志华著</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://om2sp5icw.bkt.clouddn.com/personal/wechat.jpg" alt="宗华 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>有问题欢迎加微信一起讨论哦~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/浅谈机器学习系列/" rel="tag"># 浅谈机器学习系列</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/05/浅谈机器学习（一）/" rel="next" title="浅谈机器学习（一）">
+                <i class="fa fa-chevron-left"></i> 浅谈机器学习（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -303,6 +466,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/05/浅谈机器学习（二）/"
+           data-title="浅谈机器学习（二）" data-url="http://yoursite.com/2017/03/05/浅谈机器学习（二）/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -338,7 +509,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -356,7 +527,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -513,6 +684,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
