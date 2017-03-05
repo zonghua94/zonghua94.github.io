@@ -1,0 +1,797 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="机器学习中的线性回归、逻辑回归、随机森林、支持向量机的个人理解，主要是对他们的特点以及原理的概述，不涉及高数和公式的运算。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈机器学习（一）">
+<meta property="og:url" content="http://yoursite.com/2017/03/05/浅谈机器学习（一）/index.html">
+<meta property="og:site_name" content="宗华小童鞋">
+<meta property="og:description" content="机器学习中的线性回归、逻辑回归、随机森林、支持向量机的个人理解，主要是对他们的特点以及原理的概述，不涉及高数和公式的运算。">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/线性回归.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归1.bmp">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归2.bmp">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归3.bmp">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归4.bmp">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm1.png">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm2.png">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm3.png">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm4.png">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svmgif.gif">
+<meta property="og:updated_time" content="2017-03-05T05:39:45.426Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈机器学习（一）">
+<meta name="twitter:description" content="机器学习中的线性回归、逻辑回归、随机森林、支持向量机的个人理解，主要是对他们的特点以及原理的概述，不涉及高数和公式的运算。">
+<meta name="twitter:image" content="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/线性回归.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/05/浅谈机器学习（一）/"/>
+
+
+
+
+
+  <title> 浅谈机器学习（一） | 宗华小童鞋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宗华小童鞋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">嗯，就是这样~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/05/浅谈机器学习（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="宗华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宗华小童鞋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浅谈机器学习（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T11:19:21+08:00">
+                2017-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/05/浅谈机器学习（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/浅谈机器学习（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  机器学习中的线性回归、逻辑回归、随机森林、支持向量机的个人理解，主要是对他们的特点以及原理的概述，不涉及高数和公式的运算。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>要开始着手一个深度学习方面的项目，所以开始从机器学习入手开始学习，刚刚学习一周，只谈一谈这周的收获。这周的侧重点是了解各个模型的基本概念和实现方式，对其深层的数学运算等方面没有什么见解，等以后深入了再记录吧。</p>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>线性回归的概念比较好理解，在给定一些数据集合的情况下，根据这些数据求得线性回归方程。接下来就可以通过这个方程函数，对未知的数据进行预测。所以说，线性回归的主要用途就是用于预测数据。<br>线性回归函数如下所示：<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/线性回归.jpg" alt="线性回归图例"></p>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>逻辑回归，一般般来说是一种有监督学习方式下的方法，主要用于对数据的分类，找到合适的函数将不同类别的训练集数据分开，分为线性可分和线性不可分两种情况吧。</p>
+<h3 id="线性可分"><a href="#线性可分" class="headerlink" title="线性可分"></a>线性可分</h3><p>线性可分数据，<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归1.bmp" alt="线性可分"><br>如图所示，两类数据可以用一条线性函数就可以完全分割开来，这样就能达到分类的目的。<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归2.bmp" alt="线性可分"></p>
+<h3 id="线性不可分"><a href="#线性不可分" class="headerlink" title="线性不可分"></a>线性不可分</h3><p>如图所示，下面的两组数据是无法用线性函数进行完全分割的，<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归3.bmp" alt="线性不可分"><br>那么就需要找到一条非线性的函数对他们加以区分。<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/逻辑回归4.bmp" alt="线性不可分"><br>总的来说，逻辑回归的行为模式就是找一条合适函数的过程，函数的一侧是一类数据，另一侧是另一类数据。<br><strong>这里要注意的是，逻辑回归不仅仅能把数据分为两类，也可以把数据分为多个类别，这里只是拿分为两类作为例子进行介绍，多分类现在先不做介绍</strong></p>
+<h2 id="支持向量机：SVM"><a href="#支持向量机：SVM" class="headerlink" title="支持向量机：SVM"></a>支持向量机：SVM</h2><p>个人理解，支持向量机是在逻辑回归的基础上的一种模型，与逻辑回归的功能相似，也是用来对数据进行分类的学习方法。<br>如下图所示，就是使用一个线性函数对两组数据进行区分的，<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm1.png" alt="svm"></p>
+<h3 id="线性函数选取方式"><a href="#线性函数选取方式" class="headerlink" title="线性函数选取方式"></a>线性函数选取方式</h3><p>但是，区分这两组数据的线性函数有很多，要怎样选取呢？<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm2.png" alt="svm"><br>这里支持向量机模型就给出了一个选择最优的策略：<strong>让这条直线到给定样本中最近的点最远</strong>。如图所示，<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm3.png" alt="svm"><br>从直观上来说，就是分割的间隙越大越好，把两个类分的越远越好。<strong>在SVM中，称为Maximum Marginal，是SVM的一个理论基础之一</strong>，上图中被红色和蓝色的圈标注出来的就叫做<strong>支持向量(support vector)</strong><br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svm4.png" alt="svm"><br>上图就是一个对之前说的类别中的间隙的一个描述。Classifier Boundary就是f(x)，红色和蓝色的线（plus plane与minus plane）就是support vector所在的面，红色、蓝色线之间的间隙就是我们要最大化的分类间的间隙。</p>
+<h3 id="下一个和逻辑回归的不同之处在于对于线性不可分数据集的处理方式"><a href="#下一个和逻辑回归的不同之处在于对于线性不可分数据集的处理方式" class="headerlink" title="下一个和逻辑回归的不同之处在于对于线性不可分数据集的处理方式"></a>下一个和逻辑回归的不同之处在于对于线性不可分数据集的处理方式</h3><p>支持向量机模型对于线性不可分的数据集的处理方式为：对数据增加维度使得数据在高维度的空间里线性可分（使用核函数等方式增加维度）。说起来可能有点拗口，不过下面的图式应该比较直接。<br><img src="http://om2sp5icw.bkt.clouddn.com/浅谈机器学习（一）/svmgif.gif" alt="svm"><br>之前看到一个人对这个方法做的评价我觉得很有趣也很有道理，用一个哲学的例子来解释它的原理：世界上本来没有两个完全一样的物体，对于所有的两个物体，我们可以通过增加维度让他们有所区别。比如两款笔记本电脑，从品牌和屏幕尺寸两个纬度来说，他们是一样的，但是我们加上CPU，显卡，内存等维度，最差我们加入拥有者和机器的ID号，我们就可以对着两台电脑进行完全区分开。<strong>所以说，随着维度的增加，一定可以让两个物体可分</strong>。</p>
+<h2 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h2><p>随机森林就包含了很多概念，我们接下来分别来说。</p>
+<h3 id="森林"><a href="#森林" class="headerlink" title="森林"></a>森林</h3><p>森林，顾名思义，是由许多树组成的，那么在机器学习中的树指的是什么呢？那就是决策树。</p>
+<h4 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h4><p>决策树算法是一种有监督的学习的多分类方法，是一种贪心算法，总的来说，所有数据从树根节点出发，每到达一个非叶子节点就会根据数据的特性进行分叉分类，最后直到没有个叶子节点都是相同的属性的样本为止。<br>具体的算法思想可以概括为：</p>
+<ol>
+<li>树以代表训练样本的根结点开始。</li>
+<li>如果样本都在同一个类．则该结点成为树叶，并记录该类。</li>
+<li>否则，算法选择最有分类能力的属性作为决策树的当前结点．</li>
+<li>根据当前决策结点属性取值的不同，将训练样本根据该属性的值分为若干子集，每个取值形成一个分枝，有几个取值形成几个分枝。匀针对上一步得到的一个子集，重复进行先前步骤，递归形成每个划分样本上的决策树。一旦一个属性只出现在一个结点上，就不必在该结点的任何后代考虑它，直接标记类别。</li>
+<li>递归划分步骤仅当下列条件之一成立时停止：<ul>
+<li>给定结点的所有样本属于同一类。</li>
+<li>没有剩余属性可以用来进一步划分样本．在这种情况下．使用多数表决，将给定的结点转换成树叶，并以样本中元组个数最多的类别作为类别标记，同时也可以存放该结点样本的类别分布[这个主要可以用来剪枝]。</li>
+<li>如果某一分枝tc，没有满足该分支中已有分类的样本，则以样本的多数类生成叶子节点。<h4 id="森林-1"><a href="#森林-1" class="headerlink" title="森林"></a>森林</h4>当一个数据的分类有很多的时候，决策树的深度就会过深，这样分类的效果就不会有想象的好。因此，我们把一棵决策树拆分成多个小的决策树，每棵决策树都只对一些属性进行区分。这样，多个描述属性的决策树就组成了森林。<br>那么，这有什么好处呢？通俗的来讲，就是三个臭皮匠顶一个诸葛亮的想法。一颗决策树相当于一个全领域的专家；森林就相当于很多个，单领域的专家组成的专家团。实际情况告诉我们，专家团讨论的结果要比一个全领域的专家得到的结论更好。这就是使用森林进行分类的原因。<h3 id="随机"><a href="#随机" class="headerlink" title="随机"></a>随机</h3>随机森林的随机过程分为两个：一个是随机选取样本，一个是随机训练。<h4 id="随机样本"><a href="#随机样本" class="headerlink" title="随机样本"></a>随机样本</h4>随机森林选取样本的方式比较特殊，是使用又放回的随机选取样本的方式。也就是说，最后选出的样本集中会有重复的样本出现，有一部分样本可能无法选到。<h4 id="随机训练"><a href="#随机训练" class="headerlink" title="随机训练"></a>随机训练</h4>选择样本的结果是选出了多个用于样本集合，训练的时候，每一个决策树都会在所有的样本集合中随机的选择集合进行训练，也就是说，对于一个决策树来说，并不是所有的样本集都参与训练。剩下的没参与训练的样本集可以用来进行测试。这样做的好处以后再说。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>以上只是个人刚入门机器学习的一些个人理解浅谈，有说的不对的迫切希望各位来指正，在这里谢谢各位啦~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://om2sp5icw.bkt.clouddn.com/personal/wechat.jpg" alt="宗华 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>有问题欢迎加微信一起讨论哦~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/28/Hexo相关/" rel="next" title="Hexo相关">
+                <i class="fa fa-chevron-left"></i> Hexo相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/05/浅谈机器学习（一）/"
+           data-title="浅谈机器学习（一）" data-url="http://yoursite.com/2017/03/05/浅谈机器学习（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="宗华" />
+          <p class="site-author-name" itemprop="name">宗华</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="github.com/zonghua94" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/wechat" target="_blank" title="Wechat">
+                  
+                    <i class="fa fa-fw fa-wechat"></i>
+                  
+                  Wechat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归"><span class="nav-number">1.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑回归"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性可分"><span class="nav-number">2.1.</span> <span class="nav-text">线性可分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性不可分"><span class="nav-number">2.2.</span> <span class="nav-text">线性不可分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机：SVM"><span class="nav-number">3.</span> <span class="nav-text">支持向量机：SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性函数选取方式"><span class="nav-number">3.1.</span> <span class="nav-text">线性函数选取方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下一个和逻辑回归的不同之处在于对于线性不可分数据集的处理方式"><span class="nav-number">3.2.</span> <span class="nav-text">下一个和逻辑回归的不同之处在于对于线性不可分数据集的处理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机森林"><span class="nav-number">4.</span> <span class="nav-text">随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#森林"><span class="nav-number">4.1.</span> <span class="nav-text">森林</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">4.1.1.</span> <span class="nav-text">决策树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#森林-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">森林</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机"><span class="nav-number">4.2.</span> <span class="nav-text">随机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机样本"><span class="nav-number">4.2.1.</span> <span class="nav-text">随机样本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机训练"><span class="nav-number">4.2.2.</span> <span class="nav-text">随机训练</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017-02-27 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">宗华</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zonghua"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
