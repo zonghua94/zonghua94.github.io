@@ -1,0 +1,828 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="C++的变量和基本类型相关，主要是指针、引用、限定符const，和新标准库的auto、decltype。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="熟悉C++（一）">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/熟悉C++（一）/index.html">
+<meta property="og:site_name" content="宗华小童鞋">
+<meta property="og:description" content="C++的变量和基本类型相关，主要是指针、引用、限定符const，和新标准库的auto、decltype。">
+<meta property="og:updated_time" content="2017-03-11T06:54:21.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="熟悉C++（一）">
+<meta name="twitter:description" content="C++的变量和基本类型相关，主要是指针、引用、限定符const，和新标准库的auto、decltype。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/熟悉C++（一）/"/>
+
+
+
+
+
+  <title> 熟悉C++（一） | 宗华小童鞋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宗华小童鞋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">嗯，就是这样~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/熟悉C++（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="宗华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宗华小童鞋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                熟悉C++（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T13:41:58+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/11/熟悉C++（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/熟悉C++（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  C++的变量和基本类型相关，主要是指针、引用、限定符const，和新标准库的auto、decltype。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>准备深入学习C++，所以用博客记录一周以来看到的，之前没有印象的东西，加深自己的记忆。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><ul>
+<li>main函数的标准返回值为int类型的0，但是在实际使用中只有返回类型不为int才会报错，返回-1对程序没有影响。</li>
+<li>C++中初始化和赋值是两个概念，要记得区分开。</li>
+<li>声明与定义的区别：声明：extern int i; （不申请存储空间）<pre><code>变量只能被定义一次，但可以声明多次。
+</code></pre></li>
+<li>C++变量名不能连续出现两个下划线，也不能由下划线+大写字母开头。（变量名可以为单下划线“_”，但是不能包含C++中的关键字，如：1_or_2 是不合法的）</li>
+<li>变量只对生命的作用域有效，且小作用域会覆盖大作用域。<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">42</span>;							<span class="comment">//作用域为整个文件</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> i = <span class="number">100</span>;					<span class="comment">//作用域为main函数，且这时输出i为100，覆盖了42</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i!=<span class="number">10</span>; i++) &#123;</div><div class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i;				<span class="comment">//作用域为for循环，覆盖了100</span></div><div class="line">	&#125;</div><div class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span> &lt;&lt; ::i;	<span class="comment">//第一个i输出为100，第二个指定了本文件的i，输出为42</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="变量和基本类型"><a href="#变量和基本类型" class="headerlink" title="变量和基本类型"></a>变量和基本类型</h2><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</div><div class="line"><span class="keyword">int</span> &amp;refi = i;</div></pre></td></tr></table></figure>
+<p>表示把refi与i绑定到了一起，相当于refi和i都指向了同一个地址。</p>
+<ul>
+<li>引用只能对对象使用，引用本身不是一个对象，所以不能对引用进行引用</li>
+<li>引用定义时必须初始化，且定义好后不能改变</li>
+</ul>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><ul>
+<li>指针和引用一样，只能对对象使用，所以不存在引用的指针</li>
+<li>空指针用nullptr（int *i = nullptr）</li>
+<li><p>不能把int变量的值直接赋给指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</div><div class="line"><span class="keyword">int</span> *pi = i;	<span class="comment">//错误</span></div><div class="line"><span class="keyword">int</span> *qi = <span class="number">42</span>;	<span class="comment">//正确</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>void类型的指针只能看做内存空间的地址，不能取出它的值（因为不知道该取出多少个地址的值，或者有没有符号）</p>
+</li>
+</ul>
+<h3 id="const限定符"><a href="#const限定符" class="headerlink" title="const限定符"></a>const限定符</h3><h4 id="必须初始化"><a href="#必须初始化" class="headerlink" title="必须初始化"></a>必须初始化</h4><h4 id="仅在当前文件中有效，但是合一使用extern实现共享"><a href="#仅在当前文件中有效，但是合一使用extern实现共享" class="headerlink" title="仅在当前文件中有效，但是合一使用extern实现共享"></a>仅在当前文件中有效，但是合一使用extern实现共享</h4><h4 id="const的引用"><a href="#const的引用" class="headerlink" title="const的引用"></a>const的引用</h4><ul>
+<li>想要对常量进行引用时，必须用常量的引用形式（引用也要加上const限定符）</li>
+<li>允许const引用一个数字变量</li>
+</ul>
+<h4 id="const的指针"><a href="#const的指针" class="headerlink" title="const的指针"></a>const的指针</h4><ul>
+<li>不能用一个普通的执政指向const常量（指针必须用const限制）</li>
+<li>允许const指针指向一个变量</li>
+<li>const的限定方式<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *pi = i;			<span class="comment">//pi是一个指针，指向常量int</span></div><div class="line"><span class="keyword">int</span> *<span class="keyword">const</span> pi = i;			<span class="comment">//pi是一个指针常量，指向一个变量int</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *<span class="keyword">const</span> pi = i;	<span class="comment">//pi是一个指针常量，指向一个int常量</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="顶层-底层const"><a href="#顶层-底层const" class="headerlink" title="顶层/底层const"></a>顶层/底层const</h4><p>顶层const：限制的类型与变量类型相同<br>底层const：引用、指针(所有的引用都是底层，指针不一定)<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> *<span class="keyword">const</span> p1 = &amp;i;			<span class="comment">//限制地址，p1是地址，顶层</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> c1 = <span class="number">42</span>;			<span class="comment">//限制int，ci是int，顶层</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p2 = &amp;ci;		<span class="comment">//限制int，p2是地址，底层</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *<span class="keyword">const</span> p3 = p2;	<span class="comment">//左边的const限制int，p3是地址，底层；右侧的const限制地址，p3是地址，顶层</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r = c1;			<span class="comment">//r为引用，底层</span></div></pre></td></tr></table></figure></p>
+<p><strong>拷贝时，const的限制条件（可以理解为优先级）</strong><br>无const可以拷贝底层，底层可以拷贝顶层，即：无const&gt;底层&gt;顶层/底层</p>
+<h4 id="常量表达式"><a href="#常量表达式" class="headerlink" title="常量表达式"></a>常量表达式</h4><p>在编译时就能得到结果的表达式<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> max_files = <span class="number">20</span>;	<span class="comment">//是常量表达式</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> sz = get_size();	<span class="comment">//不是，get_size()在编译时不知道值</span></div></pre></td></tr></table></figure></p>
+<h4 id="constexpr常量"><a href="#constexpr常量" class="headerlink" title="constexpr常量"></a>constexpr常量</h4><p>constexpr定义的一定是常量表达式，并且允许定义一种特殊的constexpr函数，这种函数能在编译时就知道值</p>
+<ul>
+<li>constexpr智能定义字面值类型</li>
+<li>限定符constexpr仅仅对至指针有效<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> *q = <span class="literal">nullptr</span>;	<span class="comment">//q是一个指向整数的常量指针</span></div><div class="line"><span class="keyword">constexpr</span> <span class="keyword">const</span> <span class="keyword">int</span> *p = <span class="number">0</span>;	<span class="comment">//p是指向常量整数的常量指针</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="typedef与using"><a href="#typedef与using" class="headerlink" title="typedef与using"></a>typedef与using</h3><ul>
+<li><p>const限定</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> * pstring;</div><div class="line"><span class="keyword">const</span> pstring cstr = <span class="number">0</span>;	<span class="comment">//cstr是常量指针</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>using，C++11新特性</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> pi = <span class="keyword">int</span> *;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> * pi;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上述两句是等价的</p>
+<h3 id="auto：根据表达式自动匹配类型"><a href="#auto：根据表达式自动匹配类型" class="headerlink" title="auto：根据表达式自动匹配类型"></a>auto：根据表达式自动匹配类型</h3><ul>
+<li>const限定：会忽略顶层const，保留底层const</li>
+</ul>
+<h3 id="decltype：可以得到一个函数-变量的类型"><a href="#decltype：可以得到一个函数-变量的类型" class="headerlink" title="decltype：可以得到一个函数/变量的类型"></a>decltype：可以得到一个函数/变量的类型</h3><ul>
+<li><p>用法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">decltype</span>(f(x)) sum = i;		<span class="comment">//sum的类型为f(x)返回值的类型</span></div><div class="line"><span class="keyword">decltype</span>(x) sum = i;		<span class="comment">//sum的类型为x的类型</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>注意：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">42</span>, *p = &amp;i, &amp;r = i;</div><div class="line"><span class="keyword">decltype</span>(r+<span class="number">0</span>) b;	<span class="comment">//r是引用类型，但是r+0相当于加法函数，返回值为int</span></div><div class="line"><span class="keyword">decltype</span>(*p) c;		<span class="comment">//*p类型为引用类型，那么c也为引用类型，引用必须初始化，所以这个语句错误</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>双层括号：双层括号的结果永远是引用类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">decltype</span>(i) e;		<span class="comment">//e是int型变量</span></div><div class="line"><span class="keyword">decltype</span>((i)) e;	<span class="comment">//(i)是int类型，但是((i))双层括号表示i类型的引用，所以这句话有语法错误</span></div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://om2sp5icw.bkt.clouddn.com/personal/wechat.jpg" alt="宗华 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>有问题欢迎加微信一起讨论哦~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/05/浅谈机器学习（二）/" rel="next" title="浅谈机器学习（二）">
+                <i class="fa fa-chevron-left"></i> 浅谈机器学习（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/11/熟悉C++（一）/"
+           data-title="熟悉C++（一）" data-url="http://yoursite.com/2017/03/11/熟悉C++（一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="宗华" />
+          <p class="site-author-name" itemprop="name">宗华</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="github.com/zonghua94" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/wechat" target="_blank" title="Wechat">
+                  
+                    <i class="fa fa-fw fa-wechat"></i>
+                  
+                  Wechat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量和基本类型"><span class="nav-number">2.</span> <span class="nav-text">变量和基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">2.1.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-number">2.2.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const限定符"><span class="nav-number">2.3.</span> <span class="nav-text">const限定符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#必须初始化"><span class="nav-number">2.3.1.</span> <span class="nav-text">必须初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仅在当前文件中有效，但是合一使用extern实现共享"><span class="nav-number">2.3.2.</span> <span class="nav-text">仅在当前文件中有效，但是合一使用extern实现共享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const的引用"><span class="nav-number">2.3.3.</span> <span class="nav-text">const的引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const的指针"><span class="nav-number">2.3.4.</span> <span class="nav-text">const的指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顶层-底层const"><span class="nav-number">2.3.5.</span> <span class="nav-text">顶层/底层const</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量表达式"><span class="nav-number">2.3.6.</span> <span class="nav-text">常量表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#constexpr常量"><span class="nav-number">2.3.7.</span> <span class="nav-text">constexpr常量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typedef与using"><span class="nav-number">2.4.</span> <span class="nav-text">typedef与using</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#auto：根据表达式自动匹配类型"><span class="nav-number">2.5.</span> <span class="nav-text">auto：根据表达式自动匹配类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decltype：可以得到一个函数-变量的类型"><span class="nav-number">2.6.</span> <span class="nav-text">decltype：可以得到一个函数/变量的类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017-02-27 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">宗华</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zonghua"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
