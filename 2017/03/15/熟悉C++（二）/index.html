@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="C++的字符串String、容器vector、迭代器和数组。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="熟悉C++（二）">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/熟悉C++（二）/index.html">
+<meta property="og:site_name" content="宗华小童鞋">
+<meta property="og:description" content="C++的字符串String、容器vector、迭代器和数组。">
+<meta property="og:updated_time" content="2017-03-16T05:48:44.656Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="熟悉C++（二）">
+<meta name="twitter:description" content="C++的字符串String、容器vector、迭代器和数组。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/15/熟悉C++（二）/"/>
+
+
+
+
+
+  <title> 熟悉C++（二） | 宗华小童鞋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宗华小童鞋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">嗯，就是这样~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/熟悉C++（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="宗华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宗华小童鞋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                熟悉C++（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T12:31:08+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/熟悉C++（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/熟悉C++（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  C++的字符串String、容器vector、迭代器和数组。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="字符串String"><a href="#字符串String" class="headerlink" title="字符串String"></a>字符串String</h2><h3 id="size类型"><a href="#size类型" class="headerlink" title="size类型"></a>size类型</h3><ul>
+<li>字符串的size函数的返回值类型为<strong>无符号</strong>的string::size_type类型，可以用auto 和 decltype来推断类型。</li>
+<li>尽量不要用size的返回类型和int类型进行比较，因为int类型是有符号数，比如：<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.size() &lt; n    <span class="comment">//n为int类型的负数</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>此时，返回的结果几乎永远为true，因为负数int类型需要转换成无符号数进行比较，而转换后的这个无符号数是一个很大的数。</p>
+<h3 id="‘-’相加运算"><a href="#‘-’相加运算" class="headerlink" title="‘+’相加运算"></a>‘+’相加运算</h3><p><strong>要保证‘+’练车至少有一个是string类型</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> str1 = str + <span class="string">"hello"</span>;				<span class="comment">//正确</span></div><div class="line"><span class="built_in">string</span> str2 = <span class="string">"hellow"</span> + <span class="string">"world!"</span>;			<span class="comment">//错误，两端都不是string类型的对象</span></div><div class="line"><span class="built_in">string</span> str3 = str + <span class="string">"hello"</span> + <span class="string">"world!"</span>;		<span class="comment">//正确，因为str + "hello"的结果是一个string类型</span></div><div class="line"><span class="built_in">string</span> str4 = <span class="string">"hello"</span> + <span class="string">"world!"</span> + str;		<span class="comment">//错误</span></div></pre></td></tr></table></figure></p>
+<h3 id="cctype头文件对字符的操作"><a href="#cctype头文件对字符的操作" class="headerlink" title="cctype头文件对字符的操作"></a>cctype头文件对字符的操作</h3><h3 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a>范围for循环</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(declaration : expression)</div><div class="line">	statement;</div></pre></td></tr></table></figure>
+<p>例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(<span class="string">"Hello world!"</span>)</span></span>;			</div><div class="line"><span class="keyword">decltype</span>(s.size()) punct_cnt = <span class="number">0</span>;	</div><div class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> &amp;c : s)					<span class="comment">//对c的引用，在循环里改变c就能改变字符串里的数值</span></div><div class="line">	c = uoupper(c);					<span class="comment">//auto获取的类型为char</span></div><div class="line"><span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="vector容器"><a href="#vector容器" class="headerlink" title="vector容器"></a>vector容器</h2><ul>
+<li>vertor是类模板（还有函数模板），编译器根据模板创建类或函数的过程叫做实例化。<strong>vector是模板不是类型，而verctor&lt;&gt;才是类型</strong></li>
+<li>允许使用vector<vector<int>&gt;</vector<int></li>
+<li>vector也只能对对象使用</li>
+<li>在C++中使用push_back函数向vector添加元素比先初始化然后再改变其中一个元素的值效率要高。（因为vector是类似单链表？）</li>
+<li>vector中size函数返回值类型为无符号 vector&lt; &gt;::size_type类型</li>
+<li>不能再范围for循环中改变vector的值？？？？</li>
+<li>初始化操作中，花括号（列表初始化）中提供的值如果不能用来初始化，那么就用来构造vector对象。如：<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; v1&#123;<span class="number">10</span>&#125;;			<span class="comment">//等价于v1(10)，创建10个</span></div><div class="line"><span class="built_in">vector</span> &lt;<span class="built_in">string</span>&gt; v2&#123;<span class="number">10</span>, <span class="string">"hi"</span>&#125;;	<span class="comment">//创建10个，内容初始化为"hi"</span></div><div class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; v3&#123;<span class="number">10</span>&#125;;			<span class="comment">//创建一个，内容为10</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
+<li>可以理解为容器（或string）的地址</li>
+<li>头：v.begin()    尾后：v.end()</li>
+<li><p>类型：const无法修改的是迭代器指向的对象的内容，而迭代器的地址时可以修改的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt; &gt;::iterator</div><div class="line"><span class="built_in">string</span>::iterator</div><div class="line"><span class="built_in">vector</span>&lt; &gt;::const_iterator</div><div class="line"><span class="built_in">string</span>::const_iterator</div></pre></td></tr></table></figure>
+</li>
+<li><p>C++11新特性：cbegin() ; cend() 返回的是const类型的迭代器</p>
+</li>
+<li>不能在对迭代器的范围for循环中改变vector中的元素（包括增删改），<em>实际运行时，运行界面直接没了，但是没有任何报错？？</em></li>
+<li><blockquote>
+<blockquote>
+<p>= &lt; &lt;=比较运算符只能对同一个容器的迭代器进行使用，比较前后关系。</p>
+</blockquote>
+</blockquote>
+</li>
+<li>‘-‘符号运算返回的是difference_type（有符号整数），表示距离大小</li>
+</ul>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h3><ul>
+<li><p>维度必须是一个常量表达式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> arr[<span class="number">10</span>];</div><div class="line"><span class="keyword">constexpr</span> <span class="keyword">unsigned</span> sz = <span class="number">42</span>;</div><div class="line"><span class="keyword">int</span> arr[sz];		<span class="comment">//正确</span></div><div class="line"><span class="keyword">unsigned</span> cnt = <span class="number">42</span>;</div><div class="line"><span class="keyword">int</span> arr[cnt];		<span class="comment">//错误，cnt不是常量</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>数组之间不能进行拷贝（vector容器可以）</p>
+</li>
+<li>数组下标类型为无符号的size_t类型</li>
+<li><p>初始化操作中：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">auto</span> <span class="title">ia2</span><span class="params">(ia)</span></span>;		<span class="comment">//表示ia2是指针，指向ia[0]</span></div><div class="line"><span class="keyword">decltype</span>(ia) ia3;	<span class="comment">//表示ia3余ia同样维度的数组</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>可以取到超越数组维度的指针，但是谨慎使用（可以取尾后指针），<strong>取头和尾后指针现在有函数begin(arr)和end(arr)</strong></p>
+</li>
+<li>数组元素的指针可以执行所有迭代器运算符运算，两个不同数组的指针比较是无意义的</li>
+<li><p>string vector等标准库类型，下表是无符号的，但是数组的下表可以为负数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> *p = &amp;ia[<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> j = p[<span class="number">1</span>];</div><div class="line"><span class="keyword">int</span> k = p[<span class="number">-2</span>];</div></pre></td></tr></table></figure>
+</li>
+<li><p>尽量不用字符数组表示字符串</p>
+</li>
+<li><p>可以用数组初始化vector</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> int_arr[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</div><div class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; ivec(begin(int_arr), end(int_arr));</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义数组时，要制定数组的大小，也可以通过赋初值的方式隐式定义大小</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a[<span class="number">3</span>];</div><div class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">int</span> a[<span class="number">4</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;	<span class="comment">//第四个为0</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><ul>
+<li><p>初始化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">4</span>&#125;&#125;;	<span class="comment">//等价于第二个</span></div><div class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div><div class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>&#125;,&#123;<span class="number">3</span>&#125;&#125;;		<span class="comment">//与第四个不等价</span></div><div class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>,<span class="number">3</span>&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多维数组循环：有点像auto和decltype的区别</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : ia)	<span class="comment">//取的是内层的数组类型</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> col : row)		<span class="comment">//取内层数组的内层元素</span></div><div class="line"><span class="comment">/*************************/</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> row : ia)			<span class="comment">//取的是ia的第一个指针，无法循环</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> col : row)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="初始化方式"><a href="#初始化方式" class="headerlink" title="初始化方式"></a>初始化方式</h2><ol>
+<li>拷贝初始化：用等号，或v1(v2)</li>
+<li>直接初始化：用括号（括号内的东西是存储的内容）</li>
+<li>列表初始化：用花括号</li>
+<li>默认初始化：不赋初值</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://om2sp5icw.bkt.clouddn.com/personal/wechat.jpg" alt="宗华 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>有问题欢迎加微信一起讨论哦~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/11/熟悉C++（一）/" rel="next" title="熟悉C++（一）">
+                <i class="fa fa-chevron-left"></i> 熟悉C++（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/熟悉C++（二）/"
+           data-title="熟悉C++（二）" data-url="http://yoursite.com/2017/03/15/熟悉C++（二）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="宗华" />
+          <p class="site-author-name" itemprop="name">宗华</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="github.com/zonghua94" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/wechat" target="_blank" title="Wechat">
+                  
+                    <i class="fa fa-fw fa-wechat"></i>
+                  
+                  Wechat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串String"><span class="nav-number">1.</span> <span class="nav-text">字符串String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#size类型"><span class="nav-number">1.1.</span> <span class="nav-text">size类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘-’相加运算"><span class="nav-number">1.2.</span> <span class="nav-text">‘+’相加运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cctype头文件对字符的操作"><span class="nav-number">1.3.</span> <span class="nav-text">cctype头文件对字符的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范围for循环"><span class="nav-number">1.4.</span> <span class="nav-text">范围for循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector容器"><span class="nav-number">2.</span> <span class="nav-text">vector容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-number">3.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">4.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一维数组"><span class="nav-number">4.1.</span> <span class="nav-text">一维数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">5.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化方式"><span class="nav-number">6.</span> <span class="nav-text">初始化方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017-02-27 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">宗华</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zonghua"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
