@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="本博客中的Hexo相关知识">
+<meta name="description" content="C++的语句，包括switch、for、跳转、异常处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo相关">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/Hexo相关/index.html">
+<meta property="og:title" content="熟悉C++（四）">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/熟悉C++（四）/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
-<meta property="og:description" content="本博客中的Hexo相关知识">
-<meta property="og:updated_time" content="2017-02-28T13:19:16.050Z">
+<meta property="og:description" content="C++的语句，包括switch、for、跳转、异常处理">
+<meta property="og:updated_time" content="2017-03-17T06:48:50.192Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo相关">
-<meta name="twitter:description" content="本博客中的Hexo相关知识">
+<meta name="twitter:title" content="熟悉C++（四）">
+<meta name="twitter:description" content="C++的语句，包括switch、for、跳转、异常处理">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/28/Hexo相关/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/17/熟悉C++（四）/"/>
 
 
 
 
 
-  <title> Hexo相关 | 宗华小童鞋 </title>
+  <title> 熟悉C++（四） | 宗华小童鞋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/28/Hexo相关/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/17/熟悉C++（四）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="宗华">
@@ -290,7 +290,7 @@
             
             
               
-                Hexo相关
+                熟悉C++（四）
               
             
           </h1>
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T21:08:50+08:00">
-                2017-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T13:56:23+08:00">
+                2017-03-17
               </time>
             
 
@@ -328,8 +328,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -346,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/28/Hexo相关/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/28/Hexo相关/" itemprop="commentCount"></span>
+                <a href="/2017/03/17/熟悉C++（四）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/17/熟悉C++（四）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,7 +362,7 @@
 
           
               <div class="post-description">
-                  本博客中的Hexo相关知识
+                  C++的语句，包括switch、for、跳转、异常处理
               </div>
           
 
@@ -377,7 +377,27 @@
       
 
       
-        <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2>
+        <h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><ul>
+<li><p>case关键字和它对应的值一起被称为case标签，case标签必须是<strong>整型常量表达式！</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> ch = getVal();</div><div class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</div><div class="line"><span class="keyword">switch</span>(ch) &#123;</div><div class="line">	<span class="keyword">case</span> <span class="number">3.14</span>:	<span class="comment">//错误，不是整型</span></div><div class="line">	<span class="keyword">case</span> ival:	<span class="comment">//错误，不是常量表达式</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>switch内部的变量定义：最好要加上花括号，且只在语句块内有效。</p>
+</li>
+</ul>
+<h2 id="for循环语句"><a href="#for循环语句" class="headerlink" title="for循环语句"></a>for循环语句</h2><ul>
+<li>如果想在for语句中定义多个变量，那么这些变量必须是有相同的基础类型。</li>
+<li>范围for循环：<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (declaration : expression)</div><div class="line">	statement;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>expression必须是一个序列（比如：string vector 数组）的对象，这些对象的共同点是<strong>能返回迭代器的begin和end成员</strong></p>
+<ul>
+<li>vector容器对象中不能添加删除元素的原因：在范围for循环中预存了end()的值，一旦添加删除元素，end函数的值可能变为无效。</li>
+</ul>
+<h2 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h2><h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break语句的作用范围：最近的迭代循环语句 和 switch语句。<br>作用：跳出一层。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>continue语句的作用范围：最近的迭代循环语句。<br>作用：跳出这一次循环，进入下一次。</p>
+<h3 id="goto"><a href="#goto" class="headerlink" title="goto"></a>goto</h3><p>尽量不用，程序可读性不好</p>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>一旦抛出了异常，会终止当前的函数，寻找能处理发生这个异常的函数，如果没找到，则会转到名为terminate的标准库函数，这个函数与系统有关，怎么处理这个异常可能不一样。一般情况下会导致程序退出。<br>发生异常时，不会traceback，操作过的就操作过了，不会回退（像是没执行过这个函数一样）。<br><strong>标准异常？？</strong></p>
+
       
     </div>
 
@@ -405,7 +425,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -418,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/28/Hexo使用指南/" rel="next" title="Hexo使用指南">
-                <i class="fa fa-chevron-left"></i> Hexo使用指南
+              <a href="/2017/03/16/熟悉C++（三）/" rel="next" title="熟悉C++（三）">
+                <i class="fa fa-chevron-left"></i> 熟悉C++（三）
               </a>
             
           </div>
@@ -427,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/05/浅谈机器学习（一）/" rel="prev" title="浅谈机器学习（一）">
-                浅谈机器学习（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -456,8 +472,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/28/Hexo相关/"
-           data-title="Hexo相关" data-url="http://yoursite.com/2017/02/28/Hexo相关/">
+      <div class="ds-thread" data-thread-key="2017/03/17/熟悉C++（四）/"
+           data-title="熟悉C++（四）" data-url="http://yoursite.com/2017/03/17/熟悉C++（四）/">
       </div>
     
   </div>
@@ -579,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题"><span class="nav-number">1.</span> <span class="nav-text">主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图床"><span class="nav-number">2.</span> <span class="nav-text">图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论"><span class="nav-number">3.</span> <span class="nav-text">评论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#switch语句"><span class="nav-number">1.</span> <span class="nav-text">switch语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for循环语句"><span class="nav-number">2.</span> <span class="nav-text">for循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳转语句"><span class="nav-number">3.</span> <span class="nav-text">跳转语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#break"><span class="nav-number">3.1.</span> <span class="nav-text">break</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue"><span class="nav-number">3.2.</span> <span class="nav-text">continue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goto"><span class="nav-number">3.3.</span> <span class="nav-text">goto</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理"><span class="nav-number">4.</span> <span class="nav-text">异常处理</span></a></li></ol></div>
             
 
           </div>

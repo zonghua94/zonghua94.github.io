@@ -93,10 +93,12 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/15/熟悉C++（二）/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
 <meta property="og:description" content="C++的字符串String、容器vector、迭代器和数组。">
-<meta property="og:updated_time" content="2017-03-16T05:48:44.656Z">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/C++（二）/cctype.jpg">
+<meta property="og:updated_time" content="2017-03-17T06:47:11.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="熟悉C++（二）">
 <meta name="twitter:description" content="C++的字符串String、容器vector、迭代器和数组。">
+<meta name="twitter:image" content="http://om2sp5icw.bkt.clouddn.com/C++（二）/cctype.jpg">
 
 
 
@@ -384,7 +386,8 @@
 </ul>
 <p>此时，返回的结果几乎永远为true，因为负数int类型需要转换成无符号数进行比较，而转换后的这个无符号数是一个很大的数。</p>
 <h3 id="‘-’相加运算"><a href="#‘-’相加运算" class="headerlink" title="‘+’相加运算"></a>‘+’相加运算</h3><p><strong>要保证‘+’练车至少有一个是string类型</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> str1 = str + <span class="string">"hello"</span>;				<span class="comment">//正确</span></div><div class="line"><span class="built_in">string</span> str2 = <span class="string">"hellow"</span> + <span class="string">"world!"</span>;			<span class="comment">//错误，两端都不是string类型的对象</span></div><div class="line"><span class="built_in">string</span> str3 = str + <span class="string">"hello"</span> + <span class="string">"world!"</span>;		<span class="comment">//正确，因为str + "hello"的结果是一个string类型</span></div><div class="line"><span class="built_in">string</span> str4 = <span class="string">"hello"</span> + <span class="string">"world!"</span> + str;		<span class="comment">//错误</span></div></pre></td></tr></table></figure></p>
-<h3 id="cctype头文件对字符的操作"><a href="#cctype头文件对字符的操作" class="headerlink" title="cctype头文件对字符的操作"></a>cctype头文件对字符的操作</h3><h3 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a>范围for循环</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(declaration : expression)</div><div class="line">	statement;</div></pre></td></tr></table></figure>
+<h3 id="cctype头文件对字符的操作"><a href="#cctype头文件对字符的操作" class="headerlink" title="cctype头文件对字符的操作"></a>cctype头文件对字符的操作</h3><p><img src="http://om2sp5icw.bkt.clouddn.com/C++（二）/cctype.jpg" alt="cctype"></p>
+<h3 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a>范围for循环</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(declaration : expression)</div><div class="line">	statement;</div></pre></td></tr></table></figure>
 <p>例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(<span class="string">"Hello world!"</span>)</span></span>;			</div><div class="line"><span class="keyword">decltype</span>(s.size()) punct_cnt = <span class="number">0</span>;	</div><div class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> &amp;c : s)					<span class="comment">//对c的引用，在循环里改变c就能改变字符串里的数值</span></div><div class="line">	c = uoupper(c);					<span class="comment">//auto获取的类型为char</span></div><div class="line"><span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="vector容器"><a href="#vector容器" class="headerlink" title="vector容器"></a>vector容器</h2><ul>
@@ -583,7 +586,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
