@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="深度学习," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="本博客中的Hexo相关知识">
+<meta name="description" content="初学TensorFlow，在用mnist数据熟悉各个神经网络模型的时候，对rnn的返回值弄不清楚，各种查资料查官方文档，整理一下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo相关">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/Hexo相关/index.html">
+<meta property="og:title" content="TensorFlow中rnn的返回值">
+<meta property="og:url" content="http://yoursite.com/2017/03/22/TensorFlow中rnn的返回值/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
-<meta property="og:description" content="本博客中的Hexo相关知识">
-<meta property="og:updated_time" content="2017-02-28T13:19:16.050Z">
+<meta property="og:description" content="初学TensorFlow，在用mnist数据熟悉各个神经网络模型的时候，对rnn的返回值弄不清楚，各种查资料查官方文档，整理一下。">
+<meta property="og:updated_time" content="2017-03-22T12:35:20.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo相关">
-<meta name="twitter:description" content="本博客中的Hexo相关知识">
+<meta name="twitter:title" content="TensorFlow中rnn的返回值">
+<meta name="twitter:description" content="初学TensorFlow，在用mnist数据熟悉各个神经网络模型的时候，对rnn的返回值弄不清楚，各种查资料查官方文档，整理一下。">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/28/Hexo相关/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/22/TensorFlow中rnn的返回值/"/>
 
 
 
 
 
-  <title> Hexo相关 | 宗华小童鞋 </title>
+  <title> TensorFlow中rnn的返回值 | 宗华小童鞋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/28/Hexo相关/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/22/TensorFlow中rnn的返回值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="宗华">
@@ -290,7 +290,7 @@
             
             
               
-                Hexo相关
+                TensorFlow中rnn的返回值
               
             
           </h1>
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T21:08:50+08:00">
-                2017-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-22T19:40:01+08:00">
+                2017-03-22
               </time>
             
 
@@ -328,8 +328,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/机器学习-深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习&深度学习</span>
                   </a>
                 </span>
 
@@ -346,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/28/Hexo相关/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/28/Hexo相关/" itemprop="commentCount"></span>
+                <a href="/2017/03/22/TensorFlow中rnn的返回值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/22/TensorFlow中rnn的返回值/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,7 +362,7 @@
 
           
               <div class="post-description">
-                  本博客中的Hexo相关知识
+                  初学TensorFlow，在用mnist数据熟悉各个神经网络模型的时候，对rnn的返回值弄不清楚，各种查资料查官方文档，整理一下。
               </div>
           
 
@@ -377,7 +377,28 @@
       
 
       
-        <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2>
+        <p>不管是定义了普通LSTM模型还是n-LSTM、bi-LSTM等等模型，之后需要一个语句让定义好的这个模型(cell)循环起来，<br>可以使用的函数包括：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tf.nn.dynamic_rnn(cell, inputs, sequence_length=<span class="keyword">None</span>, initial_state=<span class="keyword">None</span>, dtype=<span class="keyword">None</span>, parallel_iterations=<span class="keyword">None</span>,swap_memory=<span class="keyword">False</span>, time_major=<span class="keyword">False</span>, scope=<span class="keyword">None</span>)</div><div class="line">tf.nn.rnn(cell, inputs, initial_state=<span class="keyword">None</span>, dtype=<span class="keyword">None</span>, sequence_length=<span class="keyword">None</span>, scope=<span class="keyword">None</span>)</div><div class="line">tf.nn.state_saving_rnn(cell,inputs,state_saver, state_name, sequence_length=<span class="keyword">None</span>, scope=<span class="keyword">None</span>)</div><div class="line">tf.nn.bidirectional_rnn(cell_fw, cell_bw, inputs, initial_state_fw=<span class="keyword">None</span>, initial_state_bw=<span class="keyword">None</span>, dtype=<span class="keyword">None</span>, sequence_length=<span class="keyword">None</span>, scope=<span class="keyword">None</span>)</div></pre></td></tr></table></figure></p>
+<p>一共有四个函数可以用来构建rnn，我们这里只讲其中一部分吧（因为有的还没有用到过，用完再更）</p>
+<h2 id="dynamic-rnn"><a href="#dynamic-rnn" class="headerlink" title="dynamic_rnn"></a>dynamic_rnn</h2><h3 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h3><ul>
+<li>cell：建立的rnn模型</li>
+<li>inputs：整个tensor，维度我用到的是三维：[n_steps, batch_size, hidden_units] (n_steps：每一组数据需要几步才能输入完毕，比如28<em>28的图片，每次输入28，要分28次才能输入进去，n_steps为28；batch_size：每次训练的数据个数；hidden_units：模型中隐藏节点个数) <em>*注意：</em></em>上述说明的情况是在time_major=True的时候的情况。time_major=False的时候inputs为[batch_size, n_steps, hidden_units]</li>
+<li>initial_state：可以用cell模型自带的cell.zero_state函数初始化定义</li>
+</ul>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><ul>
+<li>返回值是两个元素(outputs, states)</li>
+<li>outputs：和输入的inputs的格式是相同的，要看time_major的值。</li>
+<li>states：final states，如果有n层，那么final states也会对应n个元素，对应着每一层的states。格式为：[layers, hidden_units, state]（layers为1时省略，此时tensor维度为2）</li>
+<li>当time_major=False时，想取得最后的outputs结果需要进行一次转置过程:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">outputs = tf.unstack(tf.transpose(outputs, [<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>]))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="tf-contrib-rnn-static-bidirectional-rnn"><a href="#tf-contrib-rnn-static-bidirectional-rnn" class="headerlink" title="tf.contrib.rnn.static_bidirectional_rnn"></a>tf.contrib.rnn.static_bidirectional_rnn</h2><h3 id="参数解释-1"><a href="#参数解释-1" class="headerlink" title="参数解释"></a>参数解释</h3><ul>
+<li>cell_fw, cell_bw：显然这两个就是前向和后向的LSTM模型了</li>
+<li>inputs：这里和上面的dynamic_rnn不同的是，inputs传入的不是一整个tensor，而是一个序列链表，链表中的每一项是一个二维的tensor：[batch_size, hidden_units]，而这个链表的长度为n_steps</li>
+<li>如果现在有一个tensor[batch_size, n_steps, hidden_units]，如何把它转换成我们想要的inputs呢<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># x:[batch_size, n_steps, hidden_units]</span></div><div class="line">x = tf.transpose(x, [<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>])</div><div class="line">x = tf.reshape(x, [<span class="number">-1</span>, hidden_units])</div><div class="line">inputs = tf.split(x, n_steps)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上就是自己纠结了好久才弄懂的东西…欢迎大家指正错误，交流学习，吐槽的话别太猛了哈，怕自己接受不了~</p>
+
       
     </div>
 
@@ -405,7 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
         </div>
       
@@ -418,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/28/Hexo使用指南/" rel="next" title="Hexo使用指南">
-                <i class="fa fa-chevron-left"></i> Hexo使用指南
+              <a href="/2017/03/21/熟悉C++（五）/" rel="next" title="熟悉C++（五）">
+                <i class="fa fa-chevron-left"></i> 熟悉C++（五）
               </a>
             
           </div>
@@ -427,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/05/浅谈机器学习（一）/" rel="prev" title="浅谈机器学习（一）">
-                浅谈机器学习（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -456,8 +473,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/28/Hexo相关/"
-           data-title="Hexo相关" data-url="http://yoursite.com/2017/02/28/Hexo相关/">
+      <div class="ds-thread" data-thread-key="2017/03/22/TensorFlow中rnn的返回值/"
+           data-title="TensorFlow中rnn的返回值" data-url="http://yoursite.com/2017/03/22/TensorFlow中rnn的返回值/">
       </div>
     
   </div>
@@ -579,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题"><span class="nav-number">1.</span> <span class="nav-text">主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图床"><span class="nav-number">2.</span> <span class="nav-text">图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论"><span class="nav-number">3.</span> <span class="nav-text">评论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic-rnn"><span class="nav-number">1.</span> <span class="nav-text">dynamic_rnn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数解释"><span class="nav-number">1.1.</span> <span class="nav-text">参数解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">1.2.</span> <span class="nav-text">返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-contrib-rnn-static-bidirectional-rnn"><span class="nav-number">2.</span> <span class="nav-text">tf.contrib.rnn.static_bidirectional_rnn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数解释-1"><span class="nav-number">2.1.</span> <span class="nav-text">参数解释</span></a></li></ol></li></ol></div>
             
 
           </div>
