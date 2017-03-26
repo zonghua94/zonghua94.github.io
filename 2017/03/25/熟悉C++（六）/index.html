@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="C++的类的相关知识，比较浅显。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="熟悉C++（六）">
+<meta property="og:url" content="http://yoursite.com/2017/03/25/熟悉C++（六）/index.html">
+<meta property="og:site_name" content="宗华小童鞋">
+<meta property="og:description" content="C++的类的相关知识，比较浅显。">
+<meta property="og:updated_time" content="2017-03-26T03:58:17.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="熟悉C++（六）">
+<meta name="twitter:description" content="C++的类的相关知识，比较浅显。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/25/熟悉C++（六）/"/>
+
+
+
+
+
+  <title> 熟悉C++（六） | 宗华小童鞋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宗华小童鞋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">嗯，就是这样~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/熟悉C++（六）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="宗华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宗华小童鞋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                熟悉C++（六）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-25T10:45:48+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/25/熟悉C++（六）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/25/熟悉C++（六）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  C++的类的相关知识，比较浅显。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h2><p>类的成员函数必须声明在类的内部，但是既可以在类内部也可以在类外部定义；和类相关的接口函数必须在类的外部。</p>
+<h3 id="const成员函数"><a href="#const成员函数" class="headerlink" title="const成员函数"></a>const成员函数</h3><ul>
+<li>this：是一个隐式参数，相当于保存了当前类的对象的地址。</li>
+<li><p>常量成员函数：允许吧const关键字放在成员函数的参数列表之后，表示该对象的this是一个常量指针，此时在这个函数中无法改变对象内部的数据成员的值，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">string</span> Sales_data::isbn() <span class="keyword">const</span> &#123;<span class="keyword">return</span> bookNo;&#125;	<span class="comment">//const表示这个函数的对象是不可改变的</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>返回this对象的函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Sales_data&amp; Sales_data::combine(<span class="keyword">const</span> Sales_data &amp;rhs)</div><div class="line">&#123;</div><div class="line">	units_sold += rhs.units_sold;</div><div class="line">	revenue += rhs.revenue;</div><div class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在这里我们定义了一个Sales_data的引用的函数，<strong>引用的作用：</strong>把当前使用这个函数的类的对象绑定到这个函数的this指针上。</p>
+<ul>
+<li>如果一个const成员函数以引用的方式返回*this，那么他的返回类型将会是常量引用<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">const</span> Screen &amp;<span class="title">desplay</span><span class="params">(<span class="built_in">std</span>::ostream &amp;os)</span> <span class="keyword">const</span> </span>&#123;<span class="comment">/*...*/</span>&#125;	<span class="comment">//第一个const表示返回值类型是一个const类型，第二个const表示对类内部的成员不会修改</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="构造函数-拷贝-赋值-析构"><a href="#构造函数-拷贝-赋值-析构" class="headerlink" title="构造函数 拷贝 赋值 析构"></a>构造函数 <del>拷贝 赋值 析构</del></h3><p>构造函数：</p>
+<ul>
+<li>原则：没有返回类型，可以重载，不过不能声明成const类型</li>
+<li><p>如果没有定义构造函数，那么编译器会自动创建默认构造函数，又叫合成的默认构造函数；但是如果自己定义了一个任意构造函数，那么此时编译器不会自动创建默认构造函数，此时要自己定义默认构造函数，形如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> Sales_data &#123;</div><div class="line">	Sales_data() = <span class="keyword">default</span>;	<span class="comment">//default表示这是一个自己定义的默认构造函数</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数对类内部成员的赋值方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//表示读取一个字符串s，然后bookNo获取这个值</span></div><div class="line">Sales_data(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s): bookNo(s) &#123;&#125;</div><div class="line"><span class="comment">//获取一个字符串s，n，p分别对这三个量赋值</span></div><div class="line">Sales_data(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s, <span class="keyword">unsigned</span> n, <span class="keyword">double</span> p): bookNo(s), units_sold(n), revenue(p*n) &#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们把花括号和冒号之间的部分叫做构造函数初始值列表，如果只对其中一个变量赋予初始值，那么其他变量默认被赋予默认初始值<br>同时，我们也可以在大括号里面的语句对成员赋初始值：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Sales_data::Sales_data(istream &amp;is)</div><div class="line">&#123;</div><div class="line">	read(is, *<span class="keyword">this</span>);	<span class="comment">//把is中提取信息放到this对象中</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>但是要注意，在大括号内赋初值和使用构造函数初始值的编译过程是完全不同的。构造函数初始值是对类的内部成员赋<strong>初始化</strong>之后将类实例化；而大括号赋初值原理相当于先对类中元素默认初始化再执行构造函数执行<strong>赋值</strong>操作。<br>在普通类型的使用时是没有区别的，但是对引用，const类型是会有编译错误的，所以<strong>最好要使用构造函数初始值</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> ConstRef &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	ConstRef(<span class="keyword">int</span> ii);</div><div class="line"><span class="keyword">private</span>:</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">const</span> <span class="keyword">int</span> ci;</div><div class="line">	<span class="keyword">int</span> &amp;ri;</div><div class="line">&#125;</div><div class="line">ConstRef::ConstRef(<span class="keyword">int</span> ii)</div><div class="line">&#123;</div><div class="line">	i = ii;		<span class="comment">//赋值操作</span></div><div class="line">	ci = ii;	<span class="comment">//错误，不能为const赋值</span></div><div class="line">	ri = i;		<span class="comment">//错误，ri没有被初始化，且不能改变代表的对象</span></div><div class="line">&#125;</div><div class="line">ConstRef::ConstRef(<span class="keyword">int</span> ii): i(ii), ci(ii), ri(i) &#123;&#125;	<span class="comment">//正确</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>成员初始化顺序：使用构造函数初始值初始化的时候，初始化的顺序并不依赖于构造函数中变量成员的出现顺序，而是<strong>依赖于类中成员的声明顺序</strong></p>
+</li>
+<li>构造函数也可以像普通函数一样使用默认实参。</li>
+<li><p>委托构造函数：C++11新标准允许使用一个构造函数作为构造函数的初始值，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Sales_data &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	Sales_data(<span class="built_in">string</span> s, <span class="keyword">unsigned</span> cnt, <span class="keyword">double</span> price): bookNo(s), units_sold(cnt), revenue(cnt*price) &#123;&#125;</div><div class="line">	<span class="comment">//把构造函数委托给其他的构造函数</span></div><div class="line">	Sales_data(): Sales_data(<span class="string">" "</span>, <span class="number">0</span>, <span class="number">0</span>) &#123;&#125;</div><div class="line">	Sales_data(<span class="built_in">string</span> s): Sales_data(s, <span class="number">0</span>, <span class="number">0</span>) &#123;&#125;</div><div class="line">	Sales_data(istream &amp;is): Sales_data() &#123;read(is, *<span class="keyword">this</span>);&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>隐式的类型转换：允许通过<strong>一次</strong>类型转换完成类对象的构造过程：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">string</span> null_book = <span class="string">"9999-9999"</span>;</div><div class="line">item.combine(null_book);		<span class="comment">//等价于item.combine(Sales_data(null_book);</span></div><div class="line">item.combine(<span class="string">"9999-9999"</span>);		<span class="comment">//错误，进行了两次转换</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过将构造函数声明为explicit阻止这种通过转换得到的构造方式（但是关键字explicit只对一个实参的构造函数有效，因为两个实参的构造函数没有这样能够经过转换构造的）</p>
+</li>
+</ul>
+<p><del>析构函数以后再说，还没看到完整讲解</del></p>
+<h3 id="成员函数与内联函数"><a href="#成员函数与内联函数" class="headerlink" title="成员函数与内联函数"></a>成员函数与内联函数</h3><p><strong>定义在类内部的函数是隐式的inline函数。</strong><br>我们既可以在类内部声明的时候显式的声明内联，也可以在定义的时候把函数定义为内联。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Screen &#123;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">get</span><span class="params">(pos ht, pos wd)</span></span>;	<span class="comment">//显式内联</span></div><div class="line"><span class="function">Screen &amp;<span class="title">move</span><span class="params">(pos r, pos c)</span></span>;			<span class="comment">//后面被声明为内联</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">inline</span> Screen &amp;Screen::move(pos r, pos c)&#123;<span class="comment">/*...*/</span>&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="类的成员"><a href="#类的成员" class="headerlink" title="类的成员"></a>类的成员</h2><h3 id="可变数据成员"><a href="#可变数据成员" class="headerlink" title="可变数据成员"></a>可变数据成员</h3><p>通过mutable定义一个可变数据成员之后，就算这个类的对象是const的，也可以对这个成员进行修改，写入。</p>
+<h3 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h3><p>不需要对类进行初始化就能使用的值，而且所有的类共有这同一个值，一个类中修改，所有的会全部修改。</p>
+<ul>
+<li><p>一般来说不能在类的内部初始化静态成员，一般像全局变量一样在类的外部<strong>声明</strong>初始化静态成员（怎么像是函数一样，既要定义，还要再进行一遍定义？），而且就算静态成员和静态函数是私有的，在类的外部也可以使用？还是说只有对静态私有成员的定义初始化能够使用类的静态函数呢？</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> Account::interestRate = initRate();</div></pre></td></tr></table></figure>
+</li>
+<li><p>允许在类的内部对静态成员提供一个const整数类型的类内初始值，而且初始值必须是一个常量表达式。</p>
+</li>
+<li>与类内普通成员的区别：静态成员可以是不完全类型，而且静态成员可以作为类内部成员的默认实参。</li>
+</ul>
+<h2 id="类的访问控制"><a href="#类的访问控制" class="headerlink" title="类的访问控制"></a>类的访问控制</h2><ul>
+<li>public与private</li>
+<li>class和struct都可以表示一个类，但是他们的区别在于他们的默认访问权限不一样，使用struct关键字，则默认的访问说明符是public，使用class关键字，默认的访问说明符是private</li>
+<li>在类内部可以定义一个类型成员（使用typedef和using），同样可以使用访问控制符对他们控制，要注意的是：<strong>用来定义类型的成员必须先定义后使用（和普通成员有所区分）</strong></li>
+</ul>
+<h2 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h2><p>如果想要其他的某些函数或者类使用这个类内部的private成员，可以在这个类中添加一条以friend关键字开始的函数声明语句即可。（相当于给了这个函数或类使用本类的内部成员的权限，不受访问控制级别的约束）<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">friend</span> Sales_data <span class="title">add</span><span class="params">(<span class="keyword">const</span> Sales_data&amp;, <span class="keyword">const</span> Sales_data&amp;)</span></span>;	<span class="comment">//add函数可以使用Sales_data类中的private成员</span></div><div class="line"><span class="keyword">friend</span> <span class="keyword">class</span> Window_mgr;					<span class="comment">//Window_mgr类内部所有函数都可以访问private</span></div><div class="line"><span class="keyword">friend</span> <span class="keyword">void</span> Window_mgr::clear(ScreenIndex);	<span class="comment">//Window_mgr类中的clear方法可以使用private</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>友元不存在传递性</li>
+<li>使用友元的时候要注意设计程序结构的时候声明和定义的依赖关系：</li>
+</ul>
+<ol>
+<li>首先定义 Window_mgr类，声明clear函数，但是不能定义（因为没有和Screen建立友元关系）</li>
+<li>定义Screen，包括对友元的声明</li>
+<li>定义clear，此时才能使用它访问Screen成员</li>
+</ol>
+<h2 id="类的类型"><a href="#类的类型" class="headerlink" title="类的类型"></a>类的类型</h2><p><strong>要记住，就算是内部结构完全相同的类，他们的类型也是不同的</strong></p>
+<h3 id="聚合类"><a href="#聚合类" class="headerlink" title="聚合类"></a>聚合类</h3><p>原则：所有的成员都是public；没有定义任何构造函数；没有类内初始值；没有基类和virtual函数。（相当于用一个类保存了很多变量）</p>
+<ul>
+<li>这样的累可以通过初始值列表的方式进行初始化，初始值列表中的赋值初始化顺序为类中成员的声明顺序<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Data val = ( <span class="string">"Anna"</span>, <span class="number">1024</span> );</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="字面值常量类"><a href="#字面值常量类" class="headerlink" title="字面值常量类"></a>字面值常量类</h3><p>原则：数据成员必须是字面值类型；至少含有一个constexpr构造函数；数据成员的初始值必须是一条常量表达式；用默认的析构函数</p>
+<ul>
+<li>至少有一个constexpr构造函数，意味着可以有其他的函数。</li>
+<li>constexpr构造函数函数体是空的，没有返回值。</li>
+</ul>
+<h2 id="名字查找和作用域"><a href="#名字查找和作用域" class="headerlink" title="名字查找和作用域"></a>名字查找和作用域</h2><h3 id="类的编译过程"><a href="#类的编译过程" class="headerlink" title="类的编译过程"></a>类的编译过程</h3><ol>
+<li>编译成员声明<ol>
+<li>在成员函数内，改名字出现之前进行查找</li>
+<li>在类内查找，此时类内的所有成员都被考虑</li>
+<li>在类定义之前的作用域继续查找</li>
+</ol>
+</li>
+<li>编译函数体<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> Money;</div><div class="line"><span class="built_in">string</span> bal;</div><div class="line">pos height;</div><div class="line"><span class="keyword">class</span> Account &#123;</div><div class="line">	<span class="function">Money <span class="title">balance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> bal; &#125;	<span class="comment">//Money类型在全局，bal类型在下面</span></div><div class="line">	Money bal;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dummy_fcn</span><span class="params">(pos height)</span> </span>&#123;</div><div class="line">		cursor = width * height;	<span class="comment">//表示函数内的height</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dummy_fcn2</span><span class="params">(pos height)</span> </span>&#123;</div><div class="line">		cursor = width * <span class="keyword">this</span>-&gt;height;	<span class="comment">//表示类中的height</span></div><div class="line">		<span class="comment">//或cursor = width * Account::height;	</span></div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dummy_fcn2</span><span class="params">(pos height)</span> </span>&#123;</div><div class="line">		cursor = width * ::height;	<span class="comment">//height表示全局的height</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="对类型名的定义"><a href="#对类型名的定义" class="headerlink" title="对类型名的定义"></a>对类型名的定义</h3><p>在内层作用于允许重新定义外层作用于的名字，但是类中不允许重新定义，而且就算是定义一个完全相同的也不可以。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> Money;</div><div class="line"><span class="keyword">class</span> Account &#123;</div><div class="line">	<span class="function">Money <span class="title">balance</span><span class="params">()</span></span>&#123;&#125;		<span class="comment">//用的是外层的Money</span></div><div class="line">	<span class="keyword">typedef</span> <span class="keyword">double</span> Money;	<span class="comment">//错误</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://om2sp5icw.bkt.clouddn.com/personal/wechat.jpg" alt="宗华 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>有问题欢迎加微信一起讨论哦~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/22/TensorFlow中rnn的返回值/" rel="next" title="TensorFlow中rnn的返回值">
+                <i class="fa fa-chevron-left"></i> TensorFlow中rnn的返回值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/25/熟悉C++（六）/"
+           data-title="熟悉C++（六）" data-url="http://yoursite.com/2017/03/25/熟悉C++（六）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="宗华" />
+          <p class="site-author-name" itemprop="name">宗华</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="github.com/zonghua94" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/wechat" target="_blank" title="Wechat">
+                  
+                    <i class="fa fa-fw fa-wechat"></i>
+                  
+                  Wechat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#成员函数"><span class="nav-number">1.</span> <span class="nav-text">成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#const成员函数"><span class="nav-number">1.1.</span> <span class="nav-text">const成员函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数-拷贝-赋值-析构"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数 拷贝 赋值 析构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员函数与内联函数"><span class="nav-number">1.3.</span> <span class="nav-text">成员函数与内联函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的成员"><span class="nav-number">2.</span> <span class="nav-text">类的成员</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可变数据成员"><span class="nav-number">2.1.</span> <span class="nav-text">可变数据成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态成员"><span class="nav-number">2.2.</span> <span class="nav-text">静态成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的访问控制"><span class="nav-number">3.</span> <span class="nav-text">类的访问控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友元"><span class="nav-number">4.</span> <span class="nav-text">友元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的类型"><span class="nav-number">5.</span> <span class="nav-text">类的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合类"><span class="nav-number">5.1.</span> <span class="nav-text">聚合类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字面值常量类"><span class="nav-number">5.2.</span> <span class="nav-text">字面值常量类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#名字查找和作用域"><span class="nav-number">6.</span> <span class="nav-text">名字查找和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的编译过程"><span class="nav-number">6.1.</span> <span class="nav-text">类的编译过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对类型名的定义"><span class="nav-number">6.2.</span> <span class="nav-text">对类型名的定义</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017-02-27 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">宗华</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zonghua"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
