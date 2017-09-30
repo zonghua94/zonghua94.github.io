@@ -1,0 +1,797 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="深度学习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="实现一个小型实时的办公室人脸识别系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="办公室实时人脸识别系统">
+<meta property="og:url" content="http://yoursite.com/2017/09/30/办公室实时人脸识别系统/index.html">
+<meta property="og:site_name" content="宗华小童鞋">
+<meta property="og:description" content="实现一个小型实时的办公室人脸识别系统">
+<meta property="og:updated_time" content="2017-09-30T13:09:08.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="办公室实时人脸识别系统">
+<meta name="twitter:description" content="实现一个小型实时的办公室人脸识别系统">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/30/办公室实时人脸识别系统/"/>
+
+
+
+
+
+  <title> 办公室实时人脸识别系统 | 宗华小童鞋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宗华小童鞋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">嗯，就是这样~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/30/办公室实时人脸识别系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="宗华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宗华小童鞋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                办公室实时人脸识别系统
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-30T18:41:27+08:00">
+                2017-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习-深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习&深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/30/办公室实时人脸识别系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/30/办公室实时人脸识别系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  实现一个小型实时的办公室人脸识别系统
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>实验室有个偷窥狂魔，走到你面前，如果你的微信QQ等聊天工具还没有关掉，他就会细细品味一番，虽然没有什么见不得人的，还是很烦。开始就是为了防小人的，在他快要过来的时候进行报警，吧该切换的切换掉就好了。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>可是，由于买的摄像头像素有点低，对远处移动物体的拍摄太不清楚，难以分辨，就变成了远程的谁动了我的电脑版本了。我不在实验室的时候有谁坐在我的位置上对着电脑一会，就会向微信发出警报。亲测有效，不过，这就显得很不实用了。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>罗技C310摄像头，本来想买网络摄像头，直接用服务器连接，而且更清晰，不过经费有限，正好有一个普通的摄像头买酒凑合用了</li>
+<li>gpu服务器， 配置OpenCV， tensorflow， itchat</li>
+</ul>
+<h2 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h2><p>由于电脑长期开着人脸识别的服务要消耗很多资源，我们实验室提供了一个gpu服务器，就像吧主要消耗资源的程序在服务器上跑，那就涉及到如何让服务器直接处理图片的问题。开始准备用网络摄像头，直接抓取，不过变成低配的普通摄像头之后就要换个方式了，大概的思路：</p>
+<ol>
+<li>在电脑上运行一个脚本，每10ms抓取摄像头的一张照片，传给服务器</li>
+<li>服务器每10s处理一次指定目录下的图片，完成人脸识别的功能</li>
+<li>如果发现是恶意对象，就在微信文件传输助手中发送警报</li>
+</ol>
+<h2 id="想到的问题"><a href="#想到的问题" class="headerlink" title="想到的问题"></a>想到的问题</h2><p>既然是一个实时监控就要保证速度，可是保证速度可能就丢失了准确性。不过，由于实验室的人不是很多，而且摄像头只对准一个位置，背景相同，所以可以减少很多不必要的麻烦。而且10ms对当前的照片进行分析，就算准确性不那么高，效果也不会那么差。</p>
+<h2 id="具体实现细节"><a href="#具体实现细节" class="headerlink" title="具体实现细节"></a>具体实现细节</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><h4 id="原始数据"><a href="#原始数据" class="headerlink" title="原始数据"></a>原始数据</h4><p>由于大家对这个都比较感兴趣，用好吃的好喝的，换取了实验室大部分人（主要是经常出现在摄像头内的）的在摄像头面前表演的机会。这样几乎获取了每人100张左右的各种不同角度的照片。</p>
+<h4 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h4><ol>
+<li>由于图片中的人脸的大小不同，可能影响检测效果，所以用到了OpenCV的人脸检测模块，取出检测到的人脸部分</li>
+<li>将取到的人脸部分压缩为64x64像素大小，神经网络对这个大小图片的识别过程需要用到的参数比较少，识别速度很快，而且因为小范围使用，需要完成的识别功能不需要太强大买这个大小基本可以满足识别条件。</li>
+<li>将图片保存到指定目录</li>
+<li>OpenCV的人脸识别模块的准确率不是很高，有时候会把不是脸的图片检索出来，所以需要手动的把图片进行整理，吧不是人脸的图片整理到新的背景目录下，这个过程有点费眼睛，不过每个人只有100张照片的情况下，任务链不是很大<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_face</span><span class="params">(img, file_path)</span>:</span></div><div class="line">    args = file_path.split(<span class="string">'/'</span>)</div><div class="line">    face_name = args[<span class="number">-2</span>]</div><div class="line">    file_name = args[<span class="number">-1</span>]</div><div class="line">    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)	<span class="comment"># 将图片变为灰度图</span></div><div class="line">    cascade = cv2.CascadeClassifier(cascade_path)		<span class="comment"># cascade_path是人脸检测模块的文件地址</span></div><div class="line">    facerect = cascade.detectMultiScale(img_gray, scaleFactor=<span class="number">1.1</span>, minNeighbors=<span class="number">3</span>, minSize=(<span class="number">10</span>, <span class="number">10</span>))	<span class="comment"># 设定检测指标</span></div><div class="line">    <span class="keyword">if</span> os.path.exists(img_path + face_name):</div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        os.mkdir(img_path + face_name)</div><div class="line">    <span class="keyword">if</span> len(facerect) &gt; <span class="number">0</span>:</div><div class="line">        print(file_path)</div><div class="line">        <span class="keyword">for</span> (index, rect) <span class="keyword">in</span> enumerate(facerect):</div><div class="line">            x, y = rect[<span class="number">0</span>:<span class="number">2</span>]</div><div class="line">            width, height = rect[<span class="number">2</span>:<span class="number">4</span>]</div><div class="line">            face = img[y: y + height, x: x + width]</div><div class="line">            face = resize_img(face)		<span class="comment"># 将图片压缩为64x64大小的尺寸</span></div><div class="line">            cv2.imwrite(img_path + face_name + <span class="string">"/"</span> + face_name + str(index) + file_name, face)	<span class="comment"># 保存图片</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样数据集就出炉了</p>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><h4 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h4><p>网络就使用了卷积网络实现，64x64的图片不是很大，网络结构也不需要很大，只用了4层3x3的卷积，最后接两个全连接层实现<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_model</span><span class="params">(input, drop=<span class="number">1</span>, n_classes = <span class="number">2</span>)</span>:</span></div><div class="line">    conv1_1 = conv_layer(input, [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">32</span>], [<span class="number">32</span>])</div><div class="line">    conv1_2 = conv_layer(conv1_1, [<span class="number">3</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">32</span>], [<span class="number">32</span>])</div><div class="line">    pool1 = max_pool(conv1_2)</div><div class="line">    pool_drop1 = tf.nn.dropout(pool1, keep_prob=drop)</div><div class="line"></div><div class="line">    conv2_1 = conv_layer(pool_drop1, [<span class="number">3</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">64</span>], [<span class="number">64</span>])</div><div class="line">    conv2_2 = conv_layer(conv2_1, [<span class="number">3</span>, <span class="number">3</span>, <span class="number">64</span>, <span class="number">64</span>], [<span class="number">64</span>])</div><div class="line">    pool2 = max_pool(conv2_2)</div><div class="line">    pool2_drop2 = tf.nn.dropout(pool2, keep_prob=drop)</div><div class="line"></div><div class="line">    flatten = tf.reshape(pool2_drop2, [<span class="number">-1</span>, <span class="number">16</span>*<span class="number">16</span>*<span class="number">64</span>])</div><div class="line">    fc1 = fc_layer(flatten, [<span class="number">16</span>*<span class="number">16</span>*<span class="number">64</span>, <span class="number">512</span>], [<span class="number">512</span>])</div><div class="line">    fc1_drop = tf.nn.dropout(tf.nn.relu(fc1), drop)</div><div class="line">    fc2 = fc_layer(fc1_drop, [<span class="number">512</span>, n_classes], [n_classes])</div><div class="line">    <span class="keyword">return</span> tf.nn.softmax(fc2)</div></pre></td></tr></table></figure></p>
+<h4 id="数据-1"><a href="#数据-1" class="headerlink" title="数据"></a>数据</h4><p>输入的数据就是指定一个文件夹名称为正例目标，其他的都为反例目标，分别添加label，就把识别任务转化为一个二分类问题</p>
+<h4 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h4><p>实际训练10轮就基本可以达到要求，准确率大概80%左右就够用了（主要是因为是在特定场景下的图片，而且人脸的个数有限，还是一个二分类问题，所以可以轻松地达到这个准确率），保存模型参数</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="输入数据"><a href="#输入数据" class="headerlink" title="输入数据"></a>输入数据</h4><ol>
+<li>在本地每隔10ms采集一个图片，将图片保存到服务器能够访问的文件目录下</li>
+<li>服务器每隔10ms处理一次数据，将数据提取人脸，resize为64x64的图片，经过神经网络，得到结果</li>
+<li>利用itchat的功能，如果发现异常（发现指定目标，或除了指定目标以外的），就向文件传输助手发送报警信息<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">itchat.auto_login(hotReload=<span class="keyword">True</span>)</div><div class="line"><span class="keyword">while</span>(<span class="number">1</span>):</div><div class="line">	time.sleep(<span class="number">100</span>/<span class="number">1000</span>)</div><div class="line">	img = cv2.imread(<span class="string">"img/detect/detect.jpg"</span>)</div><div class="line"></div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		faces = find_face(img)</div><div class="line">		images = np.asarray(faces)</div><div class="line"></div><div class="line">		imges = img.astype(<span class="string">'float32'</span>)</div><div class="line">		imges /= <span class="number">255</span></div><div class="line">		imges = img.reshape(<span class="number">-1</span>, <span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>)</div><div class="line">		<span class="keyword">if</span> images.shape[<span class="number">0</span>] &gt; <span class="number">0</span>:</div><div class="line">			predict = sess.run(pre, feed_dict=&#123;x: imges, drop: <span class="number">1.0</span>&#125;)</div><div class="line">			boss = max(np.argmax(predict, <span class="number">1</span>))</div><div class="line">			<span class="keyword">if</span> boss == <span class="number">0</span>:</div><div class="line">				print(<span class="string">"boss!"</span>)</div><div class="line">				itchat.send(<span class="string">"boss!"</span>, toUserName=<span class="string">"filehelper"</span>)</div><div class="line">				time.sleep(<span class="number">10</span>)</div><div class="line">				<span class="keyword">continue</span></div><div class="line">		print(<span class="string">"nothing happened~"</span>)</div><div class="line">		itchat.send(<span class="string">"nothing happened"</span>, toUserName=<span class="string">"filehelper"</span>)</div><div class="line">	<span class="keyword">except</span>:</div><div class="line">		print(<span class="string">"something error"</span>)</div><div class="line">		itchat.send(<span class="string">"something error"</span>, toUserName=<span class="string">"filehelper"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="还存在的问题"><a href="#还存在的问题" class="headerlink" title="还存在的问题"></a>还存在的问题</h2><ul>
+<li>一个就是OpenCV的人脸提取功能准确性不好，不知道有没有能够快速的识别人脸的神经网络解决这个问题</li>
+<li>还有就是本来希望itchat能够实现向聊天群里发送消息，不过没有尝试成功，指定的用户发送消息。</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码在github上了，有问题欢迎指正~<br><a href="https://github.com/zonghua94/real-time-face-detect" target="_blank" rel="external">小范围的实时人脸检测</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://om2sp5icw.bkt.clouddn.com/personal/wechat.jpg" alt="宗华 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>有问题欢迎加微信一起讨论哦~</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/30/Kaggle数据处理-pandas工具/" rel="next" title="Kaggle数据处理-pandas工具">
+                <i class="fa fa-chevron-left"></i> Kaggle数据处理-pandas工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/30/办公室实时人脸识别系统/"
+           data-title="办公室实时人脸识别系统" data-url="http://yoursite.com/2017/09/30/办公室实时人脸识别系统/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="宗华" />
+          <p class="site-author-name" itemprop="name">宗华</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="github.com/zonghua94" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="/wechat" target="_blank" title="Wechat">
+                  
+                    <i class="fa fa-fw fa-wechat"></i>
+                  
+                  Wechat
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">2.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大致思路"><span class="nav-number">4.</span> <span class="nav-text">大致思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#想到的问题"><span class="nav-number">5.</span> <span class="nav-text">想到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现细节"><span class="nav-number">6.</span> <span class="nav-text">具体实现细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据"><span class="nav-number">6.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原始数据"><span class="nav-number">6.1.1.</span> <span class="nav-text">原始数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据预处理"><span class="nav-number">6.1.2.</span> <span class="nav-text">数据预处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">6.2.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#神经网络"><span class="nav-number">6.2.1.</span> <span class="nav-text">神经网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练"><span class="nav-number">6.2.3.</span> <span class="nav-text">训练</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">6.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入数据"><span class="nav-number">6.3.1.</span> <span class="nav-text">输入数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还存在的问题"><span class="nav-number">7.</span> <span class="nav-text">还存在的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">8.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017-02-27 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">宗华</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zonghua"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
