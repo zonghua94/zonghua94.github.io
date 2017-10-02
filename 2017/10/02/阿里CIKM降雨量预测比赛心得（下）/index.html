@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/02/阿里CIKM降雨量预测比赛心得（下）/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
 <meta property="og:description" content="阿里天池CIKM短时降雨量预测比赛，比赛第一名的思路总结，和自己的一些反思。">
-<meta property="og:updated_time" content="2017-10-02T08:39:30.705Z">
+<meta property="og:updated_time" content="2017-10-02T13:34:33.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里CIKM降雨量预测比赛心得（下）">
 <meta name="twitter:description" content="阿里天池CIKM短时降雨量预测比赛，比赛第一名的思路总结，和自己的一些反思。">
@@ -377,7 +377,21 @@
       
 
       
-        
+        <p>当时比赛时，希望通过CNN+LSTM来找到云的运动轨迹的信息，从而判断降雨量，可是效果并不理想，后来也就打消了这个念头，主要是因为无计可施。<br>先附上<a href="https://github.com/yaoyichen/CIKM-Cup-2017" target="_blank" rel="external">第一名的比赛代码和论文pdf</a></p>
+<h2 id="文献"><a href="#文献" class="headerlink" title="文献"></a>文献</h2><p>参考的文献还没有看，先留在这里</p>
+<blockquote>
+<p>Taylor G. I. 1938. Production and dissipation of vorticity in a turbulent fluid. Proceedings of the Royal Society of London. Series A, Mathematical and Physical Sciences, 15-23<br>Rosten, E., &amp; Drummond, T. 2006. Machine learning for high-speed corner detection. Computer Vision–ECCV 2006, 430-443.<br>Lowe, D. G. (2004). Distinctive image features from scale-invariant key points. International journal of computer vision, 60(2), 91-110.</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>我所理解的大概思路，主要是希望通过目标地点上方云前一段时间的运动轨迹来预测未来1到2小时的降雨量。主要是根据晕的运动轨迹推测未来云的位置，在根据云的多少来预测降雨量。</p>
+<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>将大图片拆分成41x41的小图片（不是按照顺序切割），然后利用SIFT算法和Taylor frozen hypothesis来对15个时间段进行图片分析，寻找不同时间段中，匹配到的子图片的运动轨迹，生成一个运动轨迹图。</p>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p>特征共分为三部分</p>
+<ol>
+<li>时间、高度维度特征：从60个维度中的每一个维度中提取最大值平均值标准差等特征信息，这部分特征应该是从原始图片中提取的，描述了降雨过程中的雷达图演化过程。在未经处理的图片中，这些特征在一定程度上携带有一定的雨量变化的信息（在我的比赛解决方案中也利用到了这些信息而且效果也是比较好的），并且未经处理的数据在一定程度上也会有一定的修正处理过程的错误的修正效果？</li>
+<li>根据SIFT算法和Taylor frozen hypothesis算法生成的运动轨迹图片可以算出云的移动方向，移动速度，加速度等一系列很重要的云变化的特征。这些特征能够直接反应目标地点上方的云的变化趋势，从而对降雨量进行预测（其实就是对未来一段时间，目标地点上方云的预测）</li>
+<li>生成的运动轨迹图片的直接CNN，我觉得这个的作用主要在于通过CNN来找到对应地点的上方的云与降雨量之间的关系。<br>这个特征从原始数据，生成的运动轨迹图 到 生成的图片的再一次特征提取，看到了自己的差距。而且每一组特征的目的性都很明确，从原始的数据能找到的与云和降雨量有关的特征、对目标地点上方云图的预测，对云图和降雨量之间的转化关系的推算三个方面入手。</li>
+</ol>
+<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>基本的思路还是有一点，可是不成功之后就进入自我否定状态，还是要多读一些论文增长见识。<br>不过，似乎要稍微懂一些专业知识才可以更好地发挥么？主要是他引得这两篇文献都是有点专业性质的…不知道在接下来的比赛中是不是需要这样的技能呢？</p>
+
       
     </div>
 
@@ -479,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -558,6 +581,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文献"><span class="nav-number">1.</span> <span class="nav-text">文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预处理"><span class="nav-number">2.1.</span> <span class="nav-text">预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征"><span class="nav-number">2.2.</span> <span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反思"><span class="nav-number">3.</span> <span class="nav-text">反思</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
