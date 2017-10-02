@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="深度学习,比赛心得," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="本博客中的Hexo相关知识">
+<meta name="description" content="阿里天池CIKM短时降雨量预测比赛，最终排名15名，第一次参加天池比赛。主要记录自己的思路">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo相关">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/Hexo相关/index.html">
+<meta property="og:title" content="阿里CIKM降雨量预测比赛心得（上）">
+<meta property="og:url" content="http://yoursite.com/2017/10/02/阿里CIKM降雨量预测比赛心得（上）/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
-<meta property="og:description" content="本博客中的Hexo相关知识">
-<meta property="og:updated_time" content="2017-02-28T13:19:16.050Z">
+<meta property="og:description" content="阿里天池CIKM短时降雨量预测比赛，最终排名15名，第一次参加天池比赛。主要记录自己的思路">
+<meta property="og:updated_time" content="2017-10-02T08:38:20.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo相关">
-<meta name="twitter:description" content="本博客中的Hexo相关知识">
+<meta name="twitter:title" content="阿里CIKM降雨量预测比赛心得（上）">
+<meta name="twitter:description" content="阿里天池CIKM短时降雨量预测比赛，最终排名15名，第一次参加天池比赛。主要记录自己的思路">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/28/Hexo相关/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/02/阿里CIKM降雨量预测比赛心得（上）/"/>
 
 
 
 
 
-  <title> Hexo相关 | 宗华小童鞋 </title>
+  <title> 阿里CIKM降雨量预测比赛心得（上） | 宗华小童鞋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/28/Hexo相关/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/02/阿里CIKM降雨量预测比赛心得（上）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="宗华">
@@ -290,7 +290,7 @@
             
             
               
-                Hexo相关
+                阿里CIKM降雨量预测比赛心得（上）
               
             
           </h1>
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T21:08:50+08:00">
-                2017-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T14:56:52+08:00">
+                2017-10-02
               </time>
             
 
@@ -328,8 +328,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/机器学习-深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习&深度学习</span>
                   </a>
                 </span>
 
@@ -346,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/28/Hexo相关/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/28/Hexo相关/" itemprop="commentCount"></span>
+                <a href="/2017/10/02/阿里CIKM降雨量预测比赛心得（上）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/02/阿里CIKM降雨量预测比赛心得（上）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,7 +362,7 @@
 
           
               <div class="post-description">
-                  本博客中的Hexo相关知识
+                  阿里天池CIKM短时降雨量预测比赛，最终排名15名，第一次参加天池比赛。主要记录自己的思路
               </div>
           
 
@@ -377,7 +377,34 @@
       
 
       
-        <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2>
+        <p>上篇主要介绍自己比赛的整体思路历程</p>
+<h2 id="赛题描述"><a href="#赛题描述" class="headerlink" title="赛题描述"></a>赛题描述</h2><p>给定了以目标位置为中心，周边101km * 101km的雷达云图，预测目标位置未来1到2小时的降雨量大小</p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>= 每个雷达图包含一个目标站点（位于地图中心的）；</p>
+<ul>
+<li>每个雷达图包含目标站点在未来1小时和2小时之间的降水总量。 请注意，我们不考虑在未来1小时内的降水量；</li>
+<li>不同的时间跨度下的雷达图，间隔为6分钟，共15个时间跨度；不同高度下的雷达图，间隔为1km，从距离0.5km到3.5km，共4个高度；</li>
+<li>根据目标地点的纬度和经度，每个雷达图占地面积101 * 101平方公里。 该区域被标记为101×101格，目标位置位于中心，即（50,50）。</li>
+</ul>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在Kaggle上找到了类似的比赛，<a href="http://blog.kaggle.com/2016/01/04/how-much-did-it-rain-ii-winners-interview-1st-place-pupa-aka-aaron-sim/" target="_blank" rel="external">How much did it rain?第一名的经验总结</a></p>
+<ul>
+<li>Kaggle上给的数据也具有时间跨度，不过给出的特征是一种统计方式的特征而不是雷达图</li>
+<li>这个人采用了LSTM神经单元，为了防止过拟合，除了drop-out还自己设计了drop-in机制</li>
+<li>丢失了一些时间维度上的信息<br>所以我们也从中学习借鉴了一些思路进行我们的比赛</li>
+</ul>
+<h2 id="比赛思路"><a href="#比赛思路" class="headerlink" title="比赛思路"></a>比赛思路</h2><h3 id="直接卷积"><a href="#直接卷积" class="headerlink" title="直接卷积"></a>直接卷积</h3><p>大概的思路就是通过卷积神经网络训练一个图片到预测值的模型。</p>
+<h4 id="60个维度拆开处理"><a href="#60个维度拆开处理" class="headerlink" title="60个维度拆开处理"></a>60个维度拆开处理</h4><p>完全抛开维度的概念，把60倍数量的数据集经过卷积运算预测结果。<br>模型大概结构为：2层卷积层，每一层卷积都为2个5x5的卷积，在经过一个2x2的maxpooling，最后把卷积的结果经过两层全连接层输出结果。当网络训练的足够好时，我们去掉了最后一层的全连接层，将数据的特征经过lightGBM，RF，XGB等机器学习模型进行模型融合。<br>最后的预测结果为60个维度的均值，相当于又一次的模型融合过程吧<br>结果：最后的结果一直没法破14.0大关<br>其间还认为101x101的范围实在是太大了，师姐降雨量不需要了解这么大一块区域的东西，特征太多可能也会影响到学习的效果，我们还对图片进行了剪裁变成了64x64的原始图片，效果有所提升，不过还是差强人意。</p>
+<h3 id="把4个高度作为图像的4个通道做卷积"><a href="#把4个高度作为图像的4个通道做卷积" class="headerlink" title="把4个高度作为图像的4个通道做卷积"></a>把4个高度作为图像的4个通道做卷积</h3><p>开始对卷积网络的原理还不是很清楚，看别人的图像分析都是3个RGB通道，如果我们只用一个通道是不是效果不是很好呢，我们就盲目的把4个高度维度作为4个通道进行模型训练。<br>网络结构和上述相似，最后在15个时间维度上做均值处理。<br>最后的结果还没有上一个好，后来分析了一下，主要是因为其他图片分类的RGB三个通道是因为我们人肉眼看到的就是叠加在一起的，而讲雷达云图叠加在一起只会把图片搞得更乱，更无法分清。<br>因为CNN卷积对各个不同通道的处理结果是相加，所以4个高度维度的数据相加的结果当然很不理想。</p>
+<h3 id="LSTM-CNN"><a href="#LSTM-CNN" class="headerlink" title="LSTM + CNN"></a>LSTM + CNN</h3><p>考虑到既然是雷达云图，那么降雨量肯定与云的运动轨迹有关啊，所以时间维度上的信息一定要利用起来。<br>不过要怎么利用呢？考虑到我们想要即系学习到的是云的运动轨迹，那么如何表示云呢？就想到了用先将图片经过CNN卷积，希望机器学习到云的特征，接下来经过lstm神经网络，把云的运动趋势学习出来，这样对预测是不是很好呢。<br>由于把4个高度作为图像的四个通道效果不好总结的经验，那么就先把原始数据按照高度维度分别经过4个卷积网络，网络结构如上述所说。然后把4个维度上的网络输出合并经过一个全连接层降维。接下来按照15个时间维度进入LSTM神经网络学习。<br>结果虽然有所突破，达到了13.70左右的成绩（初赛），不过没有什么想法继续提升。</p>
+<h3 id="传统机器学习"><a href="#传统机器学习" class="headerlink" title="传统机器学习"></a>传统机器学习</h3><h4 id="Kaggle特征"><a href="#Kaggle特征" class="headerlink" title="Kaggle特征"></a>Kaggle特征</h4><p>这个想法就是看到了Kaggle比赛上的经验贴，我们也对图片按照Kaggle比赛上的题目数据那样提取统计信息特征：一圈一圈范围不断扩大地提取均值方差等等，提取了55个特征，最后将60个维度上的特征进行合并通过RF等机器学习模型预测。<br>后来考虑到Kaggle比赛上的时间维度很分散，我们拥有的15个时间维度有点过于冗余，我们大胆的保留了3个时间维度进行预测，最后的效果竟然提升了很大。也达到了13.80左右的成绩（初赛）。总结感觉是因为特征数量太过庞大，使得模型的训练效果不好。<br>其间还尝试使用了LSTM神经网络对提取的特征进行训练可是效果也没有直接RF好</p>
+<h4 id="统计特征"><a href="#统计特征" class="headerlink" title="统计特征"></a>统计特征</h4><p>这只是一个大胆的尝试，用了3个时间纬度的直方图特征，发现效果竟然比前面的都好…然后又缩小了一下图片尺寸64x64的三个时间维度的直方图特征，效果最好…</p>
+<h3 id="模型融合"><a href="#模型融合" class="headerlink" title="模型融合"></a>模型融合</h3><p>最后想法都已经尝试过了，只能靠模型融合强行提升分数了。<br>首先是传统机器学习的特征经过RF， Extra Tree， Light GBM得到预测数据，在经过岭回归对三个预测数据进行ensemble得到最终结果。<br>然后用两个机器学习方法跑出来的结果和LSTM + CNN的结果做了简单的加权平均，得到最后的结果</p>
+<h2 id="思考与总结"><a href="#思考与总结" class="headerlink" title="思考与总结"></a>思考与总结</h2><ol>
+<li>为什么CNN效果那么不好？<br>感觉主要就是因为没有利用到时间维度上的信息，感觉时间维度上的信息对降雨量很重要。比如：两个云图某时刻完全相同，可是云是两个方向运动的，一个远离目标地点，一个靠近目标地点，那么降雨量就会有很大的出入。所以说直接CNN的效果应该不是很理想。</li>
+<li>为什么要去掉很多维度上的信息效果更好？<br>在传统机器学习过程中，由于样本有限，所以特征数量不能太大，当在一张图片上提取的特征为50个时，那么总共就有3000个特征，这些特征在数据量不足的情况下很难拟合充分，所以筛选掉一些维度上的信息可以帮助缓解这一难题。</li>
+<li>当初想到但是没有实现的东西？<br>数据的预处理，我们想到要对数据进行预处理操作，不过想法比较简单，就是希望清洗掉一些与大部分数据有很大偏差的数据，可是没有什么想法实现，主要是不能确定是否真的筛选正确。<br>除此以外，我们知道预处理会对结果有很大的影响，可是都没有什么太多的想法。</li>
+</ol>
+<p>第一次参加比赛，感觉要学习的东西还很多，过一段时间把第一名的思路和自己的差距整理一下。</p>
+
       
     </div>
 
@@ -405,7 +432,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/比赛心得/" rel="tag"># 比赛心得</a>
           
         </div>
       
@@ -418,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/28/Hexo使用指南/" rel="next" title="Hexo使用指南">
-                <i class="fa fa-chevron-left"></i> Hexo使用指南
+              <a href="/2017/09/30/办公室实时人脸识别系统/" rel="next" title="办公室实时人脸识别系统">
+                <i class="fa fa-chevron-left"></i> 办公室实时人脸识别系统
               </a>
             
           </div>
@@ -428,8 +457,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/05/浅谈机器学习（一）/" rel="prev" title="浅谈机器学习（一）">
-                浅谈机器学习（一） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/02/阿里CIKM降雨量预测比赛心得（下）/" rel="prev" title="阿里CIKM降雨量预测比赛心得（下）">
+                阿里CIKM降雨量预测比赛心得（下） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -456,8 +485,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/28/Hexo相关/"
-           data-title="Hexo相关" data-url="http://yoursite.com/2017/02/28/Hexo相关/">
+      <div class="ds-thread" data-thread-key="2017/10/02/阿里CIKM降雨量预测比赛心得（上）/"
+           data-title="阿里CIKM降雨量预测比赛心得（上）" data-url="http://yoursite.com/2017/10/02/阿里CIKM降雨量预测比赛心得（上）/">
       </div>
     
   </div>
@@ -579,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题"><span class="nav-number">1.</span> <span class="nav-text">主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图床"><span class="nav-number">2.</span> <span class="nav-text">图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论"><span class="nav-number">3.</span> <span class="nav-text">评论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#赛题描述"><span class="nav-number">1.</span> <span class="nav-text">赛题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据"><span class="nav-number">2.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比赛思路"><span class="nav-number">4.</span> <span class="nav-text">比赛思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接卷积"><span class="nav-number">4.1.</span> <span class="nav-text">直接卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#60个维度拆开处理"><span class="nav-number">4.1.1.</span> <span class="nav-text">60个维度拆开处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把4个高度作为图像的4个通道做卷积"><span class="nav-number">4.2.</span> <span class="nav-text">把4个高度作为图像的4个通道做卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSTM-CNN"><span class="nav-number">4.3.</span> <span class="nav-text">LSTM + CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传统机器学习"><span class="nav-number">4.4.</span> <span class="nav-text">传统机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kaggle特征"><span class="nav-number">4.4.1.</span> <span class="nav-text">Kaggle特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计特征"><span class="nav-number">4.4.2.</span> <span class="nav-text">统计特征</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型融合"><span class="nav-number">4.5.</span> <span class="nav-text">模型融合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思考与总结"><span class="nav-number">5.</span> <span class="nav-text">思考与总结</span></a></li></ol></div>
             
 
           </div>
