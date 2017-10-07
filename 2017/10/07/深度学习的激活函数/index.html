@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="机器学习,浅谈机器学习系列," />
+  <meta name="keywords" content="深度学习," />
 
 
 
@@ -87,16 +87,27 @@
 
 
 
-<meta name="description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
+<meta name="description" content="深度学习中激活函数的作用，到底为什么要用激活函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈机器学习（二）">
-<meta property="og:url" content="http://yoursite.com/2017/03/05/浅谈机器学习（二）/index.html">
+<meta property="og:title" content="深度学习的激活函数">
+<meta property="og:url" content="http://yoursite.com/2017/10/07/深度学习的激活函数/index.html">
 <meta property="og:site_name" content="宗华小童鞋">
-<meta property="og:description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
-<meta property="og:updated_time" content="2017-03-05T07:11:15.716Z">
+<meta property="og:description" content="深度学习中激活函数的作用，到底为什么要用激活函数">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E5%85%83.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E6%97%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E5%A4%9A%E7%BA%BF.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/sigmoid0.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/sigmoid.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/tanh0.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/tanh.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/relu0.jpg">
+<meta property="og:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/relu.jpg">
+<meta property="og:updated_time" content="2017-10-07T08:48:05.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈机器学习（二）">
-<meta name="twitter:description" content="最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解">
+<meta name="twitter:title" content="深度学习的激活函数">
+<meta name="twitter:description" content="深度学习中激活函数的作用，到底为什么要用激活函数">
+<meta name="twitter:image" content="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E5%85%83.jpg">
 
 
 
@@ -124,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/05/浅谈机器学习（二）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/07/深度学习的激活函数/"/>
 
 
 
 
 
-  <title> 浅谈机器学习（二） | 宗华小童鞋 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 深度学习的激活函数 | 宗华小童鞋 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/05/浅谈机器学习（二）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/07/深度学习的激活函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="宗华">
@@ -290,7 +301,7 @@
             
             
               
-                浅谈机器学习（二）
+                深度学习的激活函数
               
             
           </h1>
@@ -305,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T14:23:41+08:00">
-                2017-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T14:48:18+08:00">
+                2017-10-07
               </time>
             
 
@@ -346,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/05/浅谈机器学习（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/浅谈机器学习（二）/" itemprop="commentCount"></span>
+                <a href="/2017/10/07/深度学习的激活函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/07/深度学习的激活函数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,7 +373,7 @@
 
           
               <div class="post-description">
-                  最近在一点点看周志华教授的《机器学习》，这篇来记录一下泛化误差、偏差、方差、噪声的关系，以及与之相关的过拟合欠拟合的理解
+                  深度学习中激活函数的作用，到底为什么要用激活函数
               </div>
           
 
@@ -377,20 +388,40 @@
       
 
       
-        <p>之前看到过拟合、欠拟合的原因和避免方法，都只是记住了而已，没有怎么理解，今天看到了周志华教授的《机器学习》，感觉体会很深刻啊。</p>
-<p><strong>泛化误差：</strong>衡量一个学习机器推广未知数据的能力。也就是说，根据学习的规则，把学习到的知识进行使用，也就是应用到新数据上的能力。<br><strong>偏差：</strong>学习算法的期望预测与真实结果的偏离程度，即刻画了算法本身的拟合能力。</p>
-<ul>
-<li><strong>算法影响</strong><br><strong>方差：</strong>度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响。</li>
-<li><strong>数据影响</strong><br><strong>噪声：</strong>表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即可花了学习问题本身的难度。</li>
-<li><strong>问题影响</strong></li>
-</ul>
-<p><strong>泛化误差 = 偏差 + 方差 + 噪声</strong></p>
-<p><strong>欠拟合</strong><br>在训练不足时（偏差很大），学习期的拟合能力不强，训练数据的扰动不足（方差很小）以使学习器产生显著变化，此时偏差住到了泛化错误率（方差远小于偏差）。这是就出现了欠拟合情况。</p>
-<p><strong>过拟合</strong><br>随着训练程度的加深，学习期的拟合能力逐渐增强（训练的多，那么训练结果和预期就应该更相符，偏差就会变小），训练数据发生的扰动渐渐能被学习器学到，方差逐渐主导了泛化错误率（数据变多了，个别的很特别的数据的增多会引起方差变大）。在训练重组后，学习期的拟合能力已非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化（方差远大于偏差），就会发生过拟合。</p>
-<p>参考文献：</p>
-<blockquote>
-<p>《机器学习》 周志华著</p>
-</blockquote>
+        <h2 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h2><p>神经网络中的每一个神经元都是一个单层的感知机，它的作用就是在平面上用一条直线把数据分割开。<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E5%85%83.jpg" alt="一个神经元"><br>多个神经元的作用就是相当于在平面上做多条直线，将数据分割开。</p>
+<p>那么当数据在平面上的表示是一个曲线图形的时候，如何用神经网络表示呢？</p>
+<ol>
+<li><p>错了就错了，也有可能是数据本来就有问题，就用正则化的方法，找到一个有一点错误，但是不影响大局的解决方案吧（正则化的理解不一定对）<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E6%97%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.jpg" alt="无激活函数"><br>可是在这种情况下毕竟数据没有拟合得那么好，如果数据本来就没有错误呢？</p>
+</li>
+<li><p>几条直线无法表示，那我可以用很多很多条直线来近似的表示一条曲线啊<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E5%A4%9A%E7%BA%BF.jpg" alt="多线"><br>但是，每一条直线都相当于一个神经元也就对应着相应个数的参数，直线越多，参数就越多，运算量就会越大，那么会对这个神经网络的性能造成影响。</p>
+</li>
+<li><p>加入了非线性的激活函数，这时每一个神经单元的输出就不再是一条直线，而是一条曲线（或是各种不规则的线，取决于用了什么激活函数），这时神经网络的表达能力就更加强大了。<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.jpg" alt="激活函数"></p>
+<h2 id="常用的激活函数"><a href="#常用的激活函数" class="headerlink" title="常用的激活函数"></a>常用的激活函数</h2><h3 id="Sigmoid函数"><a href="#Sigmoid函数" class="headerlink" title="Sigmoid函数"></a>Sigmoid函数</h3><p><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/sigmoid0.jpg" alt="Sigmoid"><br>Sigmoid函数曾被广泛地使用，函数图像为：<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/sigmoid.jpg" alt="Sigmoid"><br>特点：</p>
+</li>
+<li>输出映射在(0, 1)之间，优化稳定，可以作为输出层</li>
+<li>容易求导</li>
+<li>在BP算法进行修正参数过程中，这个梯度会与整个损失函数关于该门单元输出的梯度相乘，这样如果这个局部梯度很小时，相乘的结果就会接近于0。Sigmoid函数的导数范围(0, 0.25]，所以如果每层都用了SIgmoid函数作为激励函数，那么每一层的梯度一定很小，10以上的层数会导致梯度消失。</li>
+<li>输出值不是以0为中心的，这是个说大不大说小不小的问题。如果输入神经元的数据总是正数，那么在梯度反向传播的过程中，将会是全正数或全负数，这将会导致梯度下降权重更新时出现Z字型下降。</li>
+</ol>
+<h3 id="tanh函数"><a href="#tanh函数" class="headerlink" title="tanh函数"></a>tanh函数</h3><p><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/tanh0.jpg" alt="tanh"><br>tanh函数的图像为：<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/tanh.jpg" alt="tanh"><br>特点：</p>
+<ol>
+<li>与Sigmoid相比收敛速度更快</li>
+<li>与Sigmoid相比以0为中心</li>
+<li>还是存在和Sigmoid一样的梯度消失问题</li>
+</ol>
+<h3 id="ReLU函数"><a href="#ReLU函数" class="headerlink" title="ReLU函数"></a>ReLU函数</h3><p><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/relu0.jpg" alt="relu"><br>ReLU函数图像为：<br><img src="http://om2sp5icw.bkt.clouddn.com/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/relu.jpg" alt="relu"><br>特点：</p>
+<ol>
+<li>相比于Sigmoid与tanh在SGD下能够更快速的收敛</li>
+<li>没有指数运算，计算能力更快</li>
+<li>由于它的导数在(0, 1)之间，所以可以有效的解决梯度消失的问题</li>
+<li>提供了神经网络稀疏表达的能力：由于在训练过程中小于0的输入会被0代替那么这个神经元就相当于对最后的结果没有任何影响，也就是所说的稀疏表达能力。</li>
+<li>在训练过程中，ReLU单元比较脆弱，容易死掉（？？？）</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在CNN等神经网络中，大多情况下会使用ReLU以及它的的变型的激活函数，可是在RNN中不会使用ReLU作为激活函数。原因如下：</p>
+<ol>
+<li>由于CNN每一层的参数W都不相同，RNN中的W参数参与每一次的运算，在实际计算结果的过程中相当于对RNN中的W做近似的连乘，那么如果每次不对输出做(0, 1)规格化的调整那么会使得最后输出的结果过于庞大。</li>
+<li>ReLu实际是为了解决梯度消失的问题，然而，如果在RNN中使用ReLU函数也无法解决梯度在称其依赖上的传递问题，由于CNN中的W各不相同，并且有着稀疏性的特点，在计算梯度的过程中，不会引发梯度爆炸的问题，然而RNN中的参数W是固定的，连乘次数过多会引发梯度爆炸的问题。</li>
+</ol>
 
       
     </div>
@@ -419,9 +450,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-          
-            <a href="/tags/浅谈机器学习系列/" rel="tag"># 浅谈机器学习系列</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
         </div>
       
@@ -434,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/05/浅谈机器学习（一）/" rel="next" title="浅谈机器学习（一）">
-                <i class="fa fa-chevron-left"></i> 浅谈机器学习（一）
+              <a href="/2017/10/02/阿里CIKM降雨量预测比赛心得（下）/" rel="next" title="阿里CIKM降雨量预测比赛心得（下）">
+                <i class="fa fa-chevron-left"></i> 阿里CIKM降雨量预测比赛心得（下）
               </a>
             
           </div>
@@ -443,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/11/熟悉C++（一）/" rel="prev" title="熟悉C++（一）">
-                熟悉C++（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,8 +497,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/05/浅谈机器学习（二）/"
-           data-title="浅谈机器学习（二）" data-url="http://yoursite.com/2017/03/05/浅谈机器学习（二）/">
+      <div class="ds-thread" data-thread-key="2017/10/07/深度学习的激活函数/"
+           data-title="深度学习的激活函数" data-url="http://yoursite.com/2017/10/07/深度学习的激活函数/">
       </div>
     
   </div>
@@ -497,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -576,6 +610,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数的作用"><span class="nav-number">1.</span> <span class="nav-text">激活函数的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的激活函数"><span class="nav-number">2.</span> <span class="nav-text">常用的激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sigmoid函数"><span class="nav-number">2.1.</span> <span class="nav-text">Sigmoid函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tanh函数"><span class="nav-number">2.2.</span> <span class="nav-text">tanh函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU函数"><span class="nav-number">2.3.</span> <span class="nav-text">ReLU函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
